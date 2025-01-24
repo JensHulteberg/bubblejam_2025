@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cnfw4f03iw2rr"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchor_right = 0.24
+anchor_bottom = 0.534
+offset_right = -0.480011
+offset_bottom = -0.0320129
+grow_horizontal = 2
+grow_vertical = 2
