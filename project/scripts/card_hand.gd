@@ -65,6 +65,7 @@ func visualize():
 
 
 func _visualize_card(index: int, card: Card):
+	#print("Hej")
 	var mid_point = (cards.size() - 1) / 2.0
 	var index_offset = mid_point - index
 	var offset_float = index_offset / ((MAX_NUM_CARDS - 1) / 2.0)

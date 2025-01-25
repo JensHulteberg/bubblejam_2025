@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bfpjsmukvoays"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
 [ext_resource type="Script" path="res://scenes/bloomberg_terminal.gd" id="2_nxhbo"]
@@ -311,7 +311,7 @@ layout_mode = 2
 [node name="Deck" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("8_0qqq5")]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.2
 
 [node name="CardHand" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_u7vq2")]
 layout_mode = 2

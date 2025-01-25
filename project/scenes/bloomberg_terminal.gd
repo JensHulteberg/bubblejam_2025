@@ -16,6 +16,7 @@ var money_tween
 
 @onready var deck: Deck = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Deck
 @onready var card_hand: CardHand = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/CardHand
+@onready var date_label = $VBoxContainer/header/HBoxContainer/date
 
 func _ready() -> void:
 	clear_news()
@@ -26,6 +27,9 @@ func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
 	
 	Redaktionen.news_published.connect(_on_news_published)
+
+func set_date(date):
+	date_label.text = date
 
 func set_timeout(time):
 	timer.max_value = time

@@ -19,11 +19,12 @@ var money = 0 :
 		money = value
 
 func _ready() -> void:
-	deck = [
-	{"stock": Market.get_aktie_by_id(1), "amount": 4},
-	{"stock": Market.get_aktie_by_id(2), "amount": 3},
-	{"stock": Market.get_aktie_by_id(3), "amount": 6}
-	]
+	#deck = [
+	#{"stock": Market.get_aktie_by_id(1), "amount": 4},
+	#{"stock": Market.get_aktie_by_id(2), "amount": 3},
+	#{"stock": Market.get_aktie_by_id(3), "amount": 6}
+	#]
+	deck = []
 
 	
 	Market.market_update.connect(_on_market_update)

@@ -12,12 +12,19 @@ func _ready() -> void:
 
 
 func add_card_to_market(stock: Aktie):
+
 	var card_buy_vis = card_buy_vis_res.instantiate()
 	
 	stack.add_child(card_buy_vis)
+	
 	card_buy_vis.init(stock)
+	
+	stack.move_child(card_buy_vis, 0)
+	
+	print(stack.get_children().size())
 	if stack.get_children().size() > market_max_value:
-		stack.get_children()[-1].queue_free()
+		print(stack.get_children()[-1].card_on_sale.card_title)
+		stack.get_children()[-1].free()
 	
 
 func _on_add_card_to_market():
