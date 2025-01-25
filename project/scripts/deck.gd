@@ -16,7 +16,10 @@ func _ready():
 func add_card_to_bottom(card: Card):
 	card.visible = false
 	cards.append(card)
-	add_child(card)
+	if card.get_parent() == null:
+		add_child(card)
+	else:
+		card.reparent(self)
 	
 	var backside_card = BACKSIDE_CARD.instantiate()
 	_add_backside_card.call_deferred(backside_card)

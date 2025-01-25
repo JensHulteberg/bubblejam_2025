@@ -3,11 +3,12 @@ extends Node
 signal money_updated
 signal draw_card
 signal add_card_to_market
+signal add_card_to_deck
 
 var deck
 
-var draw_card_timer_limit = 1
-var card_to_market_timer_limit = 10
+var draw_card_timer_limit = 3
+var card_to_market_timer_limit = 3
 var draw_card_timer = 0
 var card_market_timer = 0
 
