@@ -35,4 +35,7 @@ func min_max_values () -> Vector2:
 	var values = history.map(func(h): return h.value)
 	values.append(value)
 	return Vector2(values.min(), values.max())
+
+func trend() -> int:
+	return value - history.back()
 	
