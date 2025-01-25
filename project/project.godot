@@ -22,6 +22,7 @@ PlayerState="*res://scripts/player_state.gd"
 Util="*res://scripts/util.gd"
 Redaktionen="*res://scripts/redaktionen.gd"
 SfxPlayer="*res://scripts/sfx_player.gd"
+MusicPlayer="*res://scenes/music_player.tscn"
 
 [display]
 
