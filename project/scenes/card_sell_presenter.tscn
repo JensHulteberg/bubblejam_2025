@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwnkot68534b7"]
+[gd_scene load_steps=8 format=3 uid="uid://cvdcoe5lx56by"]
 
 [ext_resource type="Script" path="res://scenes/card_sell_presenter.gd" id="1_1q7xn"]
 [ext_resource type="PackedScene" uid="uid://cnfw4f03iw2rr" path="res://scenes/card.tscn" id="1_ipe1t"]
-[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_kk8je"]
+[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="2_kk8je"]
 [ext_resource type="FontFile" uid="uid://c10d5lvaqvgfr" path="res://fonts/Mx437_DOS-V_re_JPN19.ttf" id="3_fu2lj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gotb4"]
@@ -45,3 +45,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1dqwr")
 text = "BUY"
 
 [connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="." method="_on_button_mouse_entered"]

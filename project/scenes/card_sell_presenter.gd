@@ -24,3 +24,7 @@ func _on_button_button_down() -> void:
 		SfxPlayer.play_sfx("positive")
 		PlayerState.emit_signal("add_card_to_deck", card_on_sale)
 		queue_free()
+
+
+func _on_button_mouse_entered() -> void:
+	SfxPlayer.play_sfx("woosh", 0.75 + (randf() / 2), -8.0)

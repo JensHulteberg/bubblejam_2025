@@ -5,6 +5,8 @@ var loop_count = 0
 
 func _ready() -> void:
 	$AnimationPlayer.animation_finished.connect(_on_anim_finished)
+	MusicPlayer.fade_out(5.0)
+	SfxPlayer.play_sfx("cluster")
 	$AnimationPlayer.play("death_anim")
 	
 
@@ -18,6 +20,7 @@ func _on_anim_finished(anim_name):
 		return
 	if loop_count > max_loops - 1:
 		$Timer.start()
+	SfxPlayer.play_sfx("cluster")
 	$AnimationPlayer.play("death_anim")
 
 
