@@ -10,7 +10,7 @@ var day_end = preload("res://scenes/day_roundup.tscn")
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
-var day_length: int = 5
+var day_length: int = 90
 var tick: int = 0
 
 func _ready() -> void:
