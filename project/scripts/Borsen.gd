@@ -53,7 +53,9 @@ func init_stocks() -> void:
 	
 func buy_stock(stock_id: int) -> void:
 	pass
-
+	
+func sell_stock(stock_id: int) -> void:
+	pass
 
 func update() -> void:
 	for a in aktier: 
