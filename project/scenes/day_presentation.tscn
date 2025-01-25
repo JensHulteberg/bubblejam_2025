@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1lsvvcbwtx15"]
+[gd_scene load_steps=10 format=3 uid="uid://1lsvvcbwtx15"]
 
 [ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_m5s6b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_5ifkb"]
 [ext_resource type="Script" path="res://scenes/day_presentation.gd" id="2_jbijo"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="4_60167"]
+[ext_resource type="FontFile" uid="uid://c10d5lvaqvgfr" path="res://fonts/Mx437_DOS-V_re_JPN19.ttf" id="4_bjsfi"]
 
 [sub_resource type="Animation" id="Animation_8ppq6"]
 length = 0.001
@@ -18,11 +20,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/licence:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ktg2j"]
 resource_name = "fade_in"
-length = 5.0
-step = 1.0
+length = 8.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,6 +60,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/licence:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.849, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_bd7tj"]
@@ -95,6 +145,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5ifkb")
 theme_override_font_sizes/font_size = 60
 text = "MARKET OPENING DAY 1"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="white_line" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_60167")]
+layout_mode = 2
+
+[node name="licence" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bjsfi")
+theme_override_font_sizes/font_size = 20
+text = "Terminal license fee: 100 $"
+horizontal_alignment = 2
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

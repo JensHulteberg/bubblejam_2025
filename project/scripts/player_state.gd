@@ -4,6 +4,7 @@ signal money_updated
 signal draw_card
 signal add_card_to_market
 signal add_card_to_deck
+signal explode_particles
 
 var deck
 

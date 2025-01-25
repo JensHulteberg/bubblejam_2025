@@ -1,9 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3t0kc6frluau"]
+[gd_scene load_steps=10 format=3 uid="uid://d3t0kc6frluau"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xn5i8"]
+[ext_resource type="Texture2D" uid="uid://da7qnhccbgo21" path="res://graphics/kip_symbol.png" id="2_nwkjt"]
 [ext_resource type="PackedScene" uid="uid://bu7k3wmq5b07l" path="res://scenes/card_manager.tscn" id="3_pgutm"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="5_80qjn"]
 [ext_resource type="AudioStream" uid="uid://cc1dduvu86c5s" path="res://sound/gloomberg.ogg" id="5_kwjr6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8qlp2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 1, 1)
+angle_min = -121.0
+angle_max = 176.5
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 718.68
+initial_velocity_max = 718.68
+gravity = Vector3(0, -98, 0)
+color = Color(0, 1, 0, 1)
+turbulence_noise_strength = 0.01
+turbulence_noise_scale = 3.905
+turbulence_noise_speed = Vector3(0, -1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ll76s"]
 shader = ExtResource("5_80qjn")
@@ -47,10 +63,24 @@ _data = {
 script = ExtResource("1_xn5i8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="CardManager" parent="CanvasLayer" instance=ExtResource("3_pgutm")]
 
+[node name="background_particles" type="CanvasLayer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="background_particles"]
+visible = false
+position = Vector2(640, 720)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_8qlp2")
+texture = ExtResource("2_nwkjt")
+one_shot = true
+explosiveness = 0.5
+
 [node name="post_pros" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="post_pros"]
 material = SubResource("ShaderMaterial_ll76s")

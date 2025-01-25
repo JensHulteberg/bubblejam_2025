@@ -13,6 +13,7 @@ var tick: int = 0
 func _ready() -> void:
 	init_terminal()
 	Market.market_update.connect(_on_market_update)
+	PlayerState.explode_particles.connect(_explode_particles)
 
 
 func init_terminal() -> void:
@@ -41,4 +42,6 @@ func _on_day_over(anim_name):
 	print("NEW SCENE")
 	day_length = 10
 	init_terminal()
-	
+
+func _explode_particles():
+	$background_particles/GPUParticles2D.emitting = true
