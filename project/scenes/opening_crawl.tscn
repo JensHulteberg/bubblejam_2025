@@ -4,6 +4,21 @@
 [ext_resource type="Script" path="res://scenes/opening_crawl.gd" id="2_4wm5p"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_ofd37"]
 
+[sub_resource type="Animation" id="Animation_v1316"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/ScrollContainer:scroll_vertical")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_45y45"]
 resource_name = "scroll"
 length = 80.0
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "values": [0, 2071]
 }
 
-[sub_resource type="Animation" id="Animation_v1316"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Panel/ScrollContainer:scroll_vertical")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ybic"]
 _data = {
 "RESET": SubResource("Animation_v1316"),
@@ -51,6 +51,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mlvps")
 script = ExtResource("2_4wm5p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
