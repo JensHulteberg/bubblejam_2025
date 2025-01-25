@@ -1,0 +1,258 @@
+[gd_scene load_steps=6 format=3 uid="uid://ka8m58q4bsy6"]
+
+[ext_resource type="Theme" uid="uid://qqmlxtvicreu" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
+[ext_resource type="PackedScene" uid="uid://3jm5o8wkiebn" path="res://scenes/stock.tscn" id="2_xtl88"]
+[ext_resource type="PackedScene" uid="uid://bv3if0sftqybh" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
+
+[node name="BloombergTerminal" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4bf1b")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="header" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a7t1")
+theme_override_font_sizes/font_size = 32
+text = "BLOOMBERG"
+
+[node name="white_line" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/header"]
+layout_mode = 2
+
+[node name="money" type="Label" parent="VBoxContainer/header/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$ 1 000"
+vertical_alignment = 1
+
+[node name="date" type="Label" parent="VBoxContainer/header/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1 DEC 2057"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="white_line2" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="main_layout" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="left" type="HBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 32
+
+[node name="left" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="stonk_list" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer"]
+layout_mode = 2
+
+[node name="Stock" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock2" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock3" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock4" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock5" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock6" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="Stock7" parent="VBoxContainer/main_layout/VBoxContainer/left/left/stonk_list/MarginContainer/VBoxContainer" instance=ExtResource("2_xtl88")]
+layout_mode = 2
+
+[node name="mid" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer"]
+layout_mode = 2
+text = "GRAPH"
+
+[node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="graph_box" type="HBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="stonk_graph" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid" instance=ExtResource("2_jx0n4")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="Label" type="Label" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "MARKET"
+vertical_alignment = 2
+
+[node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="draft" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a7t1")
+theme_override_font_sizes/font_size = 32
+text = "SELL"
+horizontal_alignment = 1
+
+[node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="sell" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="news" type="VBoxContainer" parent="VBoxContainer/main_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/news"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/main_layout/news/VBoxContainer"]
+layout_mode = 2
+text = "NEWS"
+
+[node name="white_line" parent="VBoxContainer/main_layout/news/VBoxContainer" instance=ExtResource("2_jx0n4")]
+layout_mode = 2
+
+[node name="news" type="Panel" parent="VBoxContainer/main_layout/news"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/news/news"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewsFlash" parent="VBoxContainer/main_layout/news/news/VBoxContainer" instance=ExtResource("3_kvf7m")]
+layout_mode = 2
+
+[node name="NewsFlash2" parent="VBoxContainer/main_layout/news/news/VBoxContainer" instance=ExtResource("3_kvf7m")]
+layout_mode = 2
+
+[node name="NewsFlash3" parent="VBoxContainer/main_layout/news/news/VBoxContainer" instance=ExtResource("3_kvf7m")]
+layout_mode = 2
+
+[node name="NewsFlash4" parent="VBoxContainer/main_layout/news/news/VBoxContainer" instance=ExtResource("3_kvf7m")]
+layout_mode = 2
+
+[node name="NewsFlash5" parent="VBoxContainer/main_layout/news/news/VBoxContainer" instance=ExtResource("3_kvf7m")]
+layout_mode = 2

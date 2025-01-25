@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv3if0sftqybh"]
+
+[ext_resource type="Theme" uid="uid://qqmlxtvicreu" path="res://graphics/master_theme.tres" id="1_yk1y0"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_lbp4v"]
+
+[node name="NewsFlash" type="MarginContainer"]
+offset_right = 72.0
+offset_bottom = 83.0
+size_flags_horizontal = 3
+theme = ExtResource("1_yk1y0")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "NEWS!"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "Very important news about something interesting!"
+fit_content = true
+
+[node name="white_line" parent="VBoxContainer" instance=ExtResource("2_lbp4v")]
+layout_mode = 2

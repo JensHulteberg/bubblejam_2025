@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://qqmlxtvicreu"]
+
+[ext_resource type="FontFile" uid="uid://x1vqek3uywsc" path="res://fonts/Mx437_DOS-V_re_JPN16.ttf" id="1_5x5k8"]
+[ext_resource type="FontFile" uid="uid://cq3y0sjiv32pm" path="res://fonts/Mx437_DOS-V_re_JPN12.ttf" id="2_41oj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34c01"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[resource]
+HBoxContainer/constants/separation = 16
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_5x5k8")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+Panel/styles/panel = SubResource("StyleBoxFlat_34c01")
+RichTextLabel/font_sizes/normal_font_size = 12
+RichTextLabel/fonts/normal_font = ExtResource("2_41oj1")
+VBoxContainer/constants/separation = 8

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dvq10v8yvlpwh"
-path="res://.godot/imported/Silver.ttf-acf985a494ec9501dbab5d460c1c1e21.fontdata"
+uid="uid://cnuyg38oqjdwa"
+path="res://.godot/imported/Mx437_HP_100LX_6x8.ttf-b715c5202fa716510072285fd5e7f7d3.fontdata"
 
 [deps]
 
-source_file="res://Silver.ttf"
-dest_files=["res://.godot/imported/Silver.ttf-acf985a494ec9501dbab5d460c1c1e21.fontdata"]
+source_file="res://fonts/Mx437_HP_100LX_6x8.ttf"
+dest_files=["res://.godot/imported/Mx437_HP_100LX_6x8.ttf-b715c5202fa716510072285fd5e7f7d3.fontdata"]
 
 [params]
 
@@ -21,18 +21,18 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
+hinting=0
 subpixel_positioning=0
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=true
+compress=false
 preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
+"size": Vector2i(8, 0),
 "variation_embolden": 0.0
 }]
 language_support={}

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dvq10v8yvlpwh"
-path="res://.godot/imported/Silver.ttf-acf985a494ec9501dbab5d460c1c1e21.fontdata"
+uid="uid://ywco6d6l6biu"
+path="res://.godot/imported/Ac437_IBM_Model3x_Alt1.ttf-ed4be0359474158e203b6f2615456f7b.fontdata"
 
 [deps]
 
-source_file="res://Silver.ttf"
-dest_files=["res://.godot/imported/Silver.ttf-acf985a494ec9501dbab5d460c1c1e21.fontdata"]
+source_file="res://fonts/Ac437_IBM_Model3x_Alt1.ttf"
+dest_files=["res://.godot/imported/Ac437_IBM_Model3x_Alt1.ttf-ed4be0359474158e203b6f2615456f7b.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=0
+subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
@@ -33,7 +33,9 @@ preload=[{
 "glyphs": [],
 "name": "New Configuration",
 "size": Vector2i(16, 0),
-"variation_embolden": 0.0
+"variation_embolden": 0.0,
+"variation_face_index": 1,
+"variation_transform": Transform2D(5, 0, 0, 6, 0, 0)
 }]
 language_support={}
 script_support={}

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wigs4me5aqt3"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dv1jt"]
+color = Color(1, 1, 1, 1)
+
+[node name="white_line" type="Panel"]
+theme_override_styles/panel = SubResource("StyleBoxLine_dv1jt")
