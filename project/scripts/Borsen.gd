@@ -1,5 +1,7 @@
 class_name Borsen extends Node
 
+signal market_update
+
 var industrys: Array[Industri] = [
 	Industri.new(1, "War"),
 	Industri.new(2, "Health"),
@@ -22,9 +24,19 @@ var aktier: Array[Aktie] = [
 
 var rng = RandomNumberGenerator.new()
 
+var timer: Timer
+
 func _ready() -> void:
 	rng.seed = 12345
 	init_stocks()
+	timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.start()
+	timer.connect("timeout", _on_timer_timeout)
+	
+func _on_timer_timeout() -> void:
+	update()
 	
 func print_stocks() -> void:
 	for a in aktier:
@@ -41,8 +53,10 @@ func init_stocks() -> void:
 	
 func buy_stock(stock_id: int) -> void:
 	pass
-	
+
+
 func update() -> void:
 	for a in aktier: 
 		a.step_value()
+	emit_signal("market_update")
 	
