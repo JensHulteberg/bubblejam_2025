@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d13v3fqs2hdw1"]
+
+[ext_resource type="Texture2D" uid="uid://bxrpd0gr54jau" path="res://graphics/card_backside.png" id="1_2rbtu"]
+
+[node name="CardBackside" type="Control"]
+custom_minimum_size = Vector2(75, 105)
+layout_mode = 3
+anchor_right = 0.065
+anchor_bottom = 0.162
+offset_right = 0.119995
+offset_bottom = 0.0240021
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(37.5, 105)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2rbtu")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
