@@ -21,11 +21,14 @@ var news: Array[News] = [
 
 var published_news: Array[News] = []
 
-var news_timer_limit: int = 10
+var news_timer_limit: int = 20
 var news_timer:int = 0
 
 func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
+	
+func reset() -> void:
+	published_news = []
 	
 func _on_market_update() -> void:
 	news_timer += 1
