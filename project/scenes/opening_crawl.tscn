@@ -111,7 +111,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "The global mindscape stock exchange collapsed in 2032.  The AI dream cores ravaged the many portfolios on the Frankfurt safe net. It was not so safe after all…… or die trying."
+text = "The global mindscape stock exchange collapsed in 2032.  The AI dream cores ravaged the many portfolios on the Frankfurt safe net. It was not so safe after all..."
 fit_content = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]

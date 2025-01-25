@@ -75,6 +75,7 @@ func _on_market_update():
 	graph.redraw_graph()
 	timer.value -= 1
 	if timer.value < 5:
+		SfxPlayer.play("negative")
 		timer.tint_progress = Color.RED
 	elif timer.value < 10:
 		timer.tint_progress = Color.YELLOW
