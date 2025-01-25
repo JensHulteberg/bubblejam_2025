@@ -1,5 +1,5 @@
 @tool
-extends Control
+class_name Card extends Control
 
 @export var card_title: String = "CARD"
 @export var image: Texture2D = preload("res://graphics/placeholder_card_image.png")
