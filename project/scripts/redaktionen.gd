@@ -44,12 +44,65 @@ var bubble_news: Array[News] = [
 	func(): Market.manipulate_industry(2, 20, false, 20), func(): pass),
 	News.new(6, "Feeling Focused", "Feel Good Inc. focuses efforts on soldier enhancing drugs",
 	func(): pass, func(): Market.manipulate_stock(5, 20, false, false, 6)),
-	News.new(6, "Feeling Focused", "Feel Good Inc. focuses efforts on soldier enhancing drugs",
-	func(): pass, func(): Market.manipulate_stock(5, 20, false, false, 6)),
+	News.new(7, "7", "war industry good, one better, baas",
+	func(): Market.manipulate_industry(1, 30, true, 0), func(): Market.manipulate_stock(2, 20, false, false, 8)),
+	News.new(8, "8", "vattenmakt good",
+	func(): pass, func(): Market.manipulate_stock(2, 20, false, false, 8)),
+	News.new(9, "9", "energy good",
+	func(): Market.manipulate_industry(3, 30, false, 8), func(): pass),
+	News.new(10, "10", "health good",
+	func(): Market.manipulate_industry(2, 30, true, 0), func(): pass),
+	News.new(11, "11", "war good ",
+	func(): Market.manipulate_industry(1, 30, true, 0), func(): pass),
+	News.new(12, "12", "energy good",
+	func(): Market.manipulate_industry(1, 30, true, 0), func(): pass),
 ]
 
 var burst_news: Array[News] = [
-	
+	News.new(1, "burst 1", "tentron fakes energy",
+	func(): pass, 
+	func(): Market.manipulate_stock(7, 30, false, true, -20)),
+	News.new(1, "burst 2", "SUN not good",
+	func(): pass, 
+	func(): Market.manipulate_stock(8, 30, false, false, -10)),
+	News.new(1, "burst 3", "Feel bad inc  ",
+	func(): pass, 
+	func(): Market.manipulate_stock(5, 30, false, true, -30)),
+	News.new(1, "burst 4", "energy bad",
+	func(): Market.manipulate_industry(2, 30, false, -8), 
+	func(): pass),
+	News.new(1, "burst 5", "Terminal price hike!!",
+	func(): pass, 
+	func(): pass),
+	News.new(1, "burst 6", "health ind bad",
+	func(): Market.manipulate_industry(2, 30, false, -16), 
+	func(): pass),
+	News.new(1, "burst 7", "a&w cant deliver",
+	func(): pass, 
+	func(): Market.manipulate_stock(1, 30, false, true, -6)),
+	News.new(1, "burst 8", "kine to hell",
+	func(): pass, 
+	func(): Market.manipulate_stock(1, 30, false, true, -8)),
+	News.new(1, "burst 9", "energy and war bad",
+	func(): 
+		Market.manipulate_industry(1, 30, false, -20)
+		Market.manipulate_industry(3, 30, false, -13), 
+	func(): pass),
+	News.new(1, "burst 10", "health industry follows",
+	func(): Market.manipulate_industry(2, 30, false, -20), 
+	func(): pass),
+	News.new(1, "burst 11", "all bad",
+	func():
+		Market.manipulate_industry(1, 30, false, -40)
+		Market.manipulate_industry(2, 30, false, -40)
+		Market.manipulate_industry(3, 30, false, -40), 
+	func(): pass),
+	News.new(1, "burst 12", "worse",
+	func(): 		
+		Market.manipulate_industry(1, 300, false, -100)
+		Market.manipulate_industry(2, 300, false, -100)
+		Market.manipulate_industry(3, 300, false, -100), 
+	func(): pass),
 ]
 
 var published_news: Array[News] = []

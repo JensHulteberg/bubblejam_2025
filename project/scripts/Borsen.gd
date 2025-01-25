@@ -58,7 +58,7 @@ func _ready() -> void:
 	init_stocks()
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1.0
+	timer.wait_time = 0.1
 	timer.connect("timeout", _on_timer_timeout)
 
 func end_day() -> void:
