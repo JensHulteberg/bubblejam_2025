@@ -12,14 +12,14 @@ var industrys: Array[Industri] = [
 ]
 
 var aktier: Array[Aktie] = [
-	Aktie.new(1, "Arnold & Wester", 1),
-	Aktie.new(2, "Baas", 1),
-	Aktie.new(3, "Alashnitev", 1),
-	Aktie.new(4, "Kine", 2),
-	Aktie.new(5, "Feel Good Inc.", 2),
-	Aktie.new(7, "Tenton", 3),
-	Aktie.new(8, "S.U.N.", 3),
-	Aktie.new(9, "Vattenmakt", 3),
+	Aktie.new(1, "Arnold & Wester", 1, "res://graphics/aw_logo.png"),
+	Aktie.new(2, "Baas", 1, "res://graphics/baas_logo.png"),
+	Aktie.new(3, "Alashnitev", 1, "res://graphics/alashnitev_logo.png"),
+	Aktie.new(4, "Kine", 2, "res://graphics/kine_logo.png"),
+	Aktie.new(5, "Feel Good Inc.", 2, "res://graphics/feel_good_logo.png"),
+	Aktie.new(7, "Tenton", 3, "res://graphics/tenton_logo.png"),
+	Aktie.new(8, "S.U.N.", 3, "res://graphics/sun_logo.png"),
+	Aktie.new(9, "Vattenmakt", 3, "res://graphics/vattenkraft_logo.png"),
 ]
 
 var rng = RandomNumberGenerator.new()

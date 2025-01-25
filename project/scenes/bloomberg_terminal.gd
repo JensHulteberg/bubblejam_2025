@@ -50,6 +50,8 @@ func generate_stock_list():
 func set_comp_desc(stock):
 	desc_box.set_title(stock.name)
 	desc_box.set_desc(stock.description)
+	print(stock.logo)
+	desc_box.set_logo(stock.logo)
 
 func _on_stock_show_description(stock):
 	set_comp_desc(stock)
