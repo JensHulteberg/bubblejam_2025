@@ -10,7 +10,7 @@ var day_end = preload("res://scenes/day_roundup.tscn")
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
-var day_length: int = 90
+var day_length: int = 20
 var tick: int = 0
 
 func _ready() -> void:
@@ -53,7 +53,8 @@ func _on_day_over(anim_name):
 	Market.end_day()
 	card_manager.save_cards_to_player_state()
 	PlayerState.save_day_end(day_index)
-
+	Redaktionen.reset()
+	
 	bloomberg_terminal.queue_free()
 	
 	var day_end_stats = PlayerState.get_day_end(day_index)
