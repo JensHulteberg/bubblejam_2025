@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3t0kc6frluau"]
+[gd_scene load_steps=7 format=3 uid="uid://d3t0kc6frluau"]
 
 [ext_resource type="PackedScene" uid="uid://bfpjsmukvoays" path="res://scenes/bloomberg_terminal.tscn" id="1_76ug7"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xn5i8"]
@@ -14,6 +14,16 @@ shader_parameter/shake_rate = 0.2
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id="Animation_3adr0"]
+resource_name = "day_1"
+length = 90.0
+step = 1.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86v4x"]
+_data = {
+"day_1": SubResource("Animation_3adr0")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xn5i8")
@@ -32,3 +42,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86v4x")
+}

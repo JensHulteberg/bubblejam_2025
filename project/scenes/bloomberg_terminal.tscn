@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfpjsmukvoays"]
+[gd_scene load_steps=13 format=3 uid="uid://bfpjsmukvoays"]
 
 [ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
@@ -10,6 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://b72kudcgdxyne" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
 [ext_resource type="PackedScene" uid="uid://2xt1w0xl0dr" path="res://scenes/deck.tscn" id="8_0qqq5"]
 [ext_resource type="PackedScene" uid="uid://cucdkmqb8k85e" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
+
+[sub_resource type="Gradient" id="Gradient_0nyuj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.680851)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jhcwt"]
+gradient = SubResource("Gradient_0nyuj")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="BloombergTerminal" type="MarginContainer"]
 anchors_preset = 15
@@ -55,6 +67,12 @@ size_flags_horizontal = 3
 text = "1 DEC 2057"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/header/HBoxContainer"]
+layout_mode = 2
+value = 90.0
+fill_mode = 5
+texture_progress = SubResource("GradientTexture2D_jhcwt")
 
 [node name="white_line2" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
 layout_mode = 2

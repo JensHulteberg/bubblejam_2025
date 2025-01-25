@@ -11,6 +11,8 @@ var money_tween
 @onready var news_scroll_cont = $VBoxContainer/main_layout/news/news/ScrollContainer
 @onready var money_label = $VBoxContainer/header/HBoxContainer/money
 @onready var graph = $VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box/stonk_graph/MarginContainer/CenterContainer/StockGraph
+@onready var timer = $VBoxContainer/header/HBoxContainer/TextureProgressBar
+
 
 func _ready() -> void:
 	clear_news()
@@ -19,6 +21,10 @@ func _ready() -> void:
 	
 	PlayerState.money_updated.connect(_on_money_updated)
 	Market.market_update.connect(_on_market_update)
+
+func set_timeout(time):
+	timer.max_value = time
+	timer.value = time
 
 func generate_stock_list():
 	for child in stock_list.get_children():
@@ -54,6 +60,7 @@ func _on_money_updated(old_val, new_val):
 
 func _on_market_update():
 	graph.redraw_graph()
+	timer.value -= 1
 
 func set_money(value):
 	money_label.text = "$ " + str(int(value))
