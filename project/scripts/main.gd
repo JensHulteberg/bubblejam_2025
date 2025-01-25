@@ -9,15 +9,19 @@ var day_end = preload("res://scenes/day_roundup.tscn")
 
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
+@onready var start_menu: Control = $menu/StartMenu
 
-var day_length: int = 20
+var day_length: int = 30
 var tick: int = 0
 
 func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
 	PlayerState.explode_particles.connect(_explode_particles)
+	start_menu.start_game.connect(start_game)
+	
+func start_game() -> void:
+	$menu.queue_free()
 	begin_day()
-
 
 func begin_day() -> void:
 	day_index += 1
@@ -27,6 +31,11 @@ func begin_day() -> void:
 	await day.fade_in("MARKET OPENING DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	await day.fade_out()
+	
+	if day_index > 3:
+		Redaktionen.bubble_on = true
+	if day_index > 7:
+		Redaktionen.burst_on = true
 
 func init_terminal() -> void:
 	bloomberg_terminal = bt.instantiate()
