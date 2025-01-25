@@ -48,7 +48,6 @@ func back_to_hand(card: Card):
 func card_sold(card: Card):
 	cards.remove_at(cards.find(card))
 	card.queue_free()
-	
 
 func hand_spots_left() -> int:
 	return MAX_NUM_CARDS - cards.size()

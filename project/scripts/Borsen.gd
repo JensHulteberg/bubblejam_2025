@@ -77,13 +77,21 @@ func init_stocks() -> void:
 		for i in range(0, 100):
 			a.step_value()
 	
-func buy_stock(stock_id: int) -> void:
-	pass
+func buy_stock(stock_id: int) -> bool:
+	for a in aktier:
+		if a.id == stock_id:
+			if PlayerState.money >= a.value:
+				PlayerState.money -= a.value
+				return true
+			else:
+				return false
+	return false
 	
 func sell_stock(stock_id: int) -> void:
 	for a in aktier:
-		var value = a.sell()
-		PlayerState.money += value
+		if a.id == stock_id:
+			var value = a.sell()
+			PlayerState.money += value
 
 func update() -> void:
 	for a in aktier: 

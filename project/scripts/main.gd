@@ -17,4 +17,4 @@ func publish_news(id):
 	Redaktionen.publish_news_item(id)
 
 func _on_day_over(anim_name):
-	get_tree().quit()
+	print("DAY OVER DO STUFF")
