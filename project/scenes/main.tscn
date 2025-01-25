@@ -78,6 +78,8 @@ texture = ExtResource("2_nwkjt")
 one_shot = true
 explosiveness = 0.5
 
+[node name="menu" type="CanvasLayer" parent="."]
+
 [node name="post_pros" type="CanvasLayer" parent="."]
 layer = 2
 

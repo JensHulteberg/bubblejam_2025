@@ -1,0 +1,162 @@
+[gd_scene load_steps=7 format=3 uid="uid://dshrwi5p8qtm"]
+
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_mlvps"]
+[ext_resource type="Script" path="res://scenes/opening_crawl.gd" id="2_4wm5p"]
+[ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_ofd37"]
+
+[sub_resource type="Animation" id="Animation_45y45"]
+resource_name = "scroll"
+length = 60.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/ScrollContainer:scroll_vertical")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 56),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2071]
+}
+
+[sub_resource type="Animation" id="Animation_v1316"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/ScrollContainer:scroll_vertical")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ybic"]
+_data = {
+"RESET": SubResource("Animation_v1316"),
+"scroll": SubResource("Animation_45y45")
+}
+
+[node name="OpeningCrawl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mlvps")
+script = ExtResource("2_4wm5p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 64
+
+[node name="Control" type="Control" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "It is the year 2057."
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "The global mindscape stock exchange collapsed in 2032.  The AI dream cores ravaged the many portfolios on the Frankfurt safe net. It was not so safe after all…… or die trying."
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "As the value of every stock globally fell to infinite negatives - chaos ensued. Many lost their finances. Some died… But from the ashes rose a new bastion of glorious investment oportunities: BÖRSEN. A new  better global trading network - free from the grasp of the AI dream cores."
+fit_content = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "BÖRSEN was safer - through exclusivity. The market was invite only and the exuberant license fee for the GLOOMBERG TERMINAL INTERFACE ensured that only those who already had money where given the opportunity to make even more."
+fit_content = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "But fuck all that!"
+fit_content = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "Through backwater channels on the mindscape you have gotten ahold of one of the illusive license keys to the GLOOMBERG TERMINAL INTERFACE. The plan is simple: trade stocks until you are filthy rich… or die trying."
+fit_content = true
+
+[node name="Control2" type="Control" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_ofd37")
+theme_override_font_sizes/normal_font_size = 32
+text = "Good luck, daytrader!"
+fit_content = true
+
+[node name="Control3" type="Control" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ybic")
+}
+autoplay = "scroll"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

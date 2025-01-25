@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b1cikqqf2v0a3"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://3x7giy0h6m5f"]
 
 [ext_resource type="FontFile" uid="uid://x1vqek3uywsc" path="res://fonts/Mx437_DOS-V_re_JPN16.ttf" id="1_5x5k8"]
 [ext_resource type="FontFile" uid="uid://cq3y0sjiv32pm" path="res://fonts/Mx437_DOS-V_re_JPN12.ttf" id="2_41oj1"]
@@ -8,6 +8,18 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_053yy"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gehky"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34c01"]
 bg_color = Color(0, 0, 0, 0)
@@ -19,8 +31,11 @@ border_color = Color(1, 1, 1, 1)
 
 [resource]
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_5x5k8")
 Button/styles/focus = SubResource("StyleBoxFlat_2ydce")
 Button/styles/hover = SubResource("StyleBoxFlat_053yy")
+Button/styles/normal = SubResource("StyleBoxFlat_gehky")
 HBoxContainer/constants/separation = 16
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_5x5k8")

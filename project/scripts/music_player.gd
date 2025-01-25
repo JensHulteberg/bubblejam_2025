@@ -6,7 +6,8 @@ var songs = {
 }
 
 func _ready() -> void:
-	play_song("intro")
+	pass
+	#play_song("intro")
 
 
 func play_song(name: String):
