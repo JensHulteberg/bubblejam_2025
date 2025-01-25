@@ -62,3 +62,13 @@ func update() -> void:
 	
 func get_industry_by_id(id: int) -> Industri:
 	return industrys.filter(func(i): return i.id == id).front();
+	
+func manipulate_industry(id: int, ticks:int, bubble: bool = false, boost: int = 0) -> void:
+	for i in industrys:
+		if i.id == id:
+			i.manipulate(ticks, bubble, boost)
+			
+func manipulate_stock(id: int, ticks: int, only_up: bool = false, only_down: bool = false, boost = 0) -> void:
+	for a in aktier:
+		if a.id == id:
+			a.manipulate(ticks, only_up, only_down, boost)
