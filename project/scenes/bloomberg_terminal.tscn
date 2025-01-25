@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3gyhwbgwvstj"]
+[gd_scene load_steps=14 format=3 uid="uid://bfpjsmukvoays"]
 
-[ext_resource type="Theme" uid="uid://b1cikqqf2v0a3" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
-[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="2_jx0n4"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
 [ext_resource type="Script" path="res://scenes/bloomberg_terminal.gd" id="2_nxhbo"]
-[ext_resource type="PackedScene" path="res://scenes/stock.tscn" id="2_xtl88"]
-[ext_resource type="PackedScene" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
-[ext_resource type="PackedScene" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
-[ext_resource type="PackedScene" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
-[ext_resource type="PackedScene" uid="uid://bbhwblwx6eo8p" path="res://scenes/deck.tscn" id="8_0qqq5"]
-[ext_resource type="PackedScene" uid="uid://bdq78udxiavn3" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
+[ext_resource type="PackedScene" uid="uid://3jm5o8wkiebn" path="res://scenes/stock.tscn" id="2_xtl88"]
+[ext_resource type="PackedScene" uid="uid://bv3if0sftqybh" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
+[ext_resource type="PackedScene" uid="uid://cpgmgi4ocnan7" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
+[ext_resource type="PackedScene" uid="uid://b72kudcgdxyne" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
+[ext_resource type="PackedScene" uid="uid://2xt1w0xl0dr" path="res://scenes/deck.tscn" id="8_0qqq5"]
+[ext_resource type="PackedScene" uid="uid://cucdkmqb8k85e" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
 
 [sub_resource type="Gradient" id="Gradient_0nyuj"]
 interpolation_mode = 1
@@ -22,6 +22,9 @@ width = 24
 height = 24
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1emk"]
+size = Vector2(75, 105)
 
 [node name="BloombergTerminal" type="MarginContainer"]
 anchors_preset = 15
@@ -253,6 +256,21 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer" groups=["sell_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/Area2D"]
+shape = SubResource("RectangleShape2D_x1emk")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnfw4f03iw2rr"]
+[gd_scene load_steps=10 format=3 uid="uid://cnfw4f03iw2rr"]
 
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_1k8w5"]
 [ext_resource type="Texture2D" uid="uid://d20mbtve1i25l" path="res://graphics/card.png" id="1_76pk6"]
@@ -12,6 +12,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xgea"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p01li"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cpea"]
+size = Vector2(75, 105)
 
 [node name="Card" type="Control"]
 z_index = 20
@@ -91,6 +94,21 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_am7u1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_8xgea")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p01li")
 action_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="CenterContainer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterContainer/Area2D"]
+shape = SubResource("RectangleShape2D_1cpea")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

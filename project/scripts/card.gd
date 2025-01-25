@@ -58,7 +58,17 @@ func _sync():
 
 func _on_button_button_down() -> void:
 	dragging = true
+	var overlapp = $CenterContainer/Area2D.get_overlapping_areas()
+	print(overlapp)
+	
+	for area in overlapp:
+		
+		if area.is_in_group("sell_area"):
+			sell()
+			return
 
+func sell():
+	PlayerState.money += 100
 
 func _on_button_button_up() -> void:
 	dragging = false
