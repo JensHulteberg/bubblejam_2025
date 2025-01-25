@@ -179,7 +179,7 @@ size_flags_vertical = 0
 
 [node name="StockGraph" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box/stonk_graph/MarginContainer/CenterContainer" instance=ExtResource("6_ma82b")]
 width = 484.0
-height = 83.0
+height = 105.0
 
 [node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box"]
 layout_mode = 2

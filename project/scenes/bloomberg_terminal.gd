@@ -46,6 +46,7 @@ func generate_stock_list():
 		stock_vis.show_description.connect(_on_stock_show_description)
 		
 		stock_list.add_child(stock_vis)
+	_on_stock_show_description(Market.aktier[0])
 
 func set_comp_desc(stock):
 	desc_box.set_title(stock.name)
