@@ -72,7 +72,7 @@ var burst_news: Array[News] = [
 	func(): Market.manipulate_industry(2, 30, false, -8), 
 	func(): pass),
 	News.new(1, "burst 5", "Terminal price hike!!",
-	func(): pass, 
+	func(): PlayerState.hike_terminal_price = true, 
 	func(): pass),
 	News.new(1, "burst 6", "health ind bad",
 	func(): Market.manipulate_industry(2, 30, false, -16), 

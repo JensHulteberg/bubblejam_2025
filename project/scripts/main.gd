@@ -1,7 +1,7 @@
 extends Node
 
 var days = ["Day_1"]
-var day_index = 7
+var day_index = 0
 
 var bt = preload("res://scenes/bloomberg_terminal.tscn")
 var day_begin = preload("res://scenes/day_presentation.tscn")
@@ -32,12 +32,13 @@ func begin_day() -> void:
 	$CanvasLayer.add_child(day)
 	await day.fade_in("MARKET OPENING DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
-	await day.fade_out()
 	
 	if day_index > 3:
 		Redaktionen.bubble_on = true
 	if day_index > 7:
 		Redaktionen.burst_on = true
+		
+	await day.fade_out()
 
 func init_terminal() -> void:
 	bloomberg_terminal = bt.instantiate()
@@ -52,8 +53,6 @@ func init_terminal() -> void:
 func date(day: int) -> String:
 	return "%s DEC 2057" % (day + 6)
 
-func publish_news(id):
-	Redaktionen.publish_news_item(id)
 	
 func _on_market_update() -> void:
 	tick += 1
