@@ -26,7 +26,8 @@ func add_card(card: Card, initial: bool = false):
 		return false
 	
 	card.back_to_hand.connect(back_to_hand.bind(card))
-	
+	card.card_sold.connect(card_sold.bind(card))
+
 	cards.append(card)
 	if card.get_parent() == null:
 		add_child(card)
@@ -44,10 +45,16 @@ func add_card(card: Card, initial: bool = false):
 func back_to_hand(card: Card):
 	card_manager.back_to_hand(card)
 
+func card_sold(card: Card):
+	cards.remove_at(cards.find(card))
+	card.queue_free()
+	
 
+func hand_spots_left() -> int:
+	return MAX_NUM_CARDS - cards.size()
+	
 func at_limit():
 	return cards.size() == MAX_NUM_CARDS
-
 
 func visualize():
 	var signals = []

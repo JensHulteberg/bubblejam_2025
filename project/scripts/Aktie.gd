@@ -95,5 +95,6 @@ func reset_manipulation() -> void:
 	only_down = false
 	boost = 0
 
-func sell() -> void:
+func sell() -> int:
 	sell_spell.call(self)
+	return value

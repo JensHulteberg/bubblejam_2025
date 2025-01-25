@@ -10,7 +10,7 @@ var hand: CardHand
 
 func _ready():
 	set_process_input(true)
-	PlayerState.draw_card.connect(pull_card)
+	PlayerState.draw_card.connect(draw_full)
 	#Market.market_update.connect(pull_card)
 
 
@@ -31,11 +31,17 @@ func init(deck_, hand_):
 			card.init(card_ref.stock)
 			
 
+func draw_full():
+	for i in range(hand.hand_spots_left()):
+		pull_card()
+
 func pull_card():
 	if hand.at_limit():
 		return
 	
 	var card = deck.pull_card()
+	if card == null:
+		return
 	
 	var z_index_before = card.z_index
 	card.reparent(self)

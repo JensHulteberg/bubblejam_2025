@@ -6,7 +6,7 @@ signal add_card_to_market
 
 var deck
 
-var draw_card_timer_limit = 10
+var draw_card_timer_limit = 1
 var card_to_market_timer_limit = 10
 var draw_card_timer = 0
 var card_market_timer = 0
@@ -23,6 +23,7 @@ func _ready() -> void:
 	{"stock": Market.get_aktie_by_id(2), "amount": 3},
 	{"stock": Market.get_aktie_by_id(3), "amount": 6}
 	]
+
 	
 	Market.market_update.connect(_on_market_update)
 

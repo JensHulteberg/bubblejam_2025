@@ -2,6 +2,7 @@
 class_name Card extends Control
 
 signal back_to_hand
+signal card_sold
 
 @export var card_title: String = "CARD"
 @export var image: Texture2D = preload("res://graphics/placeholder_card_image.png")
@@ -13,6 +14,7 @@ signal back_to_hand
 @onready var button: Button = $Button
 
 var dragging: bool = false
+var stock_id: int
 
 var anchor_x:
 	get:
@@ -39,6 +41,7 @@ var offset:
 func init(stock):
 	card_title_label.text = stock.name
 	image_texture_rect.texture = load(stock.logo)
+	stock_id = stock.id
 
 func _ready():
 	_sync()
@@ -64,7 +67,8 @@ func _on_button_button_down() -> void:
 	dragging = true
 
 func sell():
-	PlayerState.money += 100
+	Market.sell_stock(stock_id)
+	emit_signal("card_sold")
 
 func _on_button_button_up() -> void:
 	dragging = false
@@ -73,7 +77,6 @@ func _on_button_button_up() -> void:
 	for area in overlapp:
 		if area.is_in_group("sell_area"):
 			sell()
-			queue_free()
 			return
 	
 	back_to_hand.emit()
