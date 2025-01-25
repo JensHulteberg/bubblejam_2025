@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://c3gyhwbgwvstj"]
 
-[ext_resource type="Theme" uid="uid://b1cikqqf2v0a3" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
-[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="2_jx0n4"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
 [ext_resource type="Script" path="res://scenes/bloomberg_terminal.gd" id="2_nxhbo"]
-[ext_resource type="PackedScene" uid="uid://c3ude603ll14s" path="res://scenes/stock.tscn" id="2_xtl88"]
-[ext_resource type="PackedScene" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
-[ext_resource type="PackedScene" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
-[ext_resource type="PackedScene" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
+[ext_resource type="PackedScene" uid="uid://3jm5o8wkiebn" path="res://scenes/stock.tscn" id="2_xtl88"]
+[ext_resource type="PackedScene" uid="uid://bv3if0sftqybh" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
+[ext_resource type="PackedScene" uid="uid://cyxpqxtjbuxo8" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
+[ext_resource type="PackedScene" uid="uid://b72kudcgdxyne" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
 [ext_resource type="PackedScene" uid="uid://bbhwblwx6eo8p" path="res://scenes/deck.tscn" id="8_0qqq5"]
 [ext_resource type="PackedScene" uid="uid://bdq78udxiavn3" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
 
@@ -50,7 +50,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a7t1")
 theme_override_font_sizes/font_size = 32
-text = "GLOOMBERG"
+text = "GLOOMBERG TERMINAL V4.3"
 
 [node name="white_line" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
 layout_mode = 2
