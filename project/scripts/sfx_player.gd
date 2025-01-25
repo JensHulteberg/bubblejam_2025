@@ -7,10 +7,12 @@ extends Node
 	"negative": preload("res://sound/negative.ogg"),
 	"piano_jingle": preload("res://sound/piano-jingle.ogg"),
 	"positive": preload("res://sound/positive.ogg"),
+	"positronic": preload("res://sound/positronic.ogg"),
 	"scream": preload("res://sound/scream.ogg"),
 	"synth-jingle": preload("res://sound/synth-jingle.ogg"),
 	"yeah": preload("res://sound/yeah.ogg"),
-	"gunshot": preload("res://sound/gunshot.ogg")
+	"gunshot": preload("res://sound/gunshot.ogg"),
+	"oh_no": preload("res://sound/oh_no.ogg"),
 }
 
 func play_sfx(name: String):
