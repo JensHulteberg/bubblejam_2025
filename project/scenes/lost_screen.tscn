@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1sn0ocpiv1fw"]
+[gd_scene load_steps=6 format=3 uid="uid://dcjqk7w3gop4j"]
 
-[ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="1_bnmxs"]
-[ext_resource type="Script" path="res://scenes/death_screen.gd" id="1_ydhd2"]
+[ext_resource type="Script" path="res://scenes/lost_screen.gd" id="1_6w5ra"]
+[ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="1_yhpfr"]
 
 [sub_resource type="Animation" id="Animation_hynkd"]
 resource_name = "death_anim"
@@ -64,14 +64,14 @@ _data = {
 "death_anim": SubResource("Animation_hynkd")
 }
 
-[node name="DeathScreen" type="Control"]
+[node name="lost_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ydhd2")
+script = ExtResource("1_6w5ra")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -92,9 +92,9 @@ grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_bnmxs")
+theme_override_fonts/normal_font = ExtResource("1_yhpfr")
 theme_override_font_sizes/normal_font_size = 60
-text = "YOU BLEW YOUR ONE CHANCE..."
+text = "BACK TO THE SLUMS STREET RAT..."
 fit_content = true
 autowrap_mode = 0
 
@@ -105,5 +105,3 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
