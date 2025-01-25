@@ -18,10 +18,11 @@ extends Node
 	"cluster": preload("res://sound/cluster.ogg"),
 }
 
-func play_sfx(name: String, pitch: float = 1.0):
+func play_sfx(name: String, pitch: float = 1.0, volume_db: float = 0.0):
 	var audio_stream_player = AudioStreamPlayer.new()
 	add_child(audio_stream_player)
 	audio_stream_player.stream = sound_effects[name]
+	audio_stream_player.volume_db = volume_db
 	audio_stream_player.pitch_scale = pitch
 	audio_stream_player.play()
 	await audio_stream_player.finished
