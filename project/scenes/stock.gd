@@ -7,7 +7,16 @@ func set_title(name):
 	$VBoxContainer/HBoxContainer/title.text = name
 
 func set_value(value):
-	$VBoxContainer/HBoxContainer/value.text = "$ " + str(value)
+	var trend = stock.trend()
+	
+	var trend_symbol = "-"
+	
+	if trend > 0:
+		trend_symbol = "[color=green]▲[/color]"
+	else:
+		trend_symbol = "[color=red]▼[/color]"
+	
+	$VBoxContainer/HBoxContainer/value.text = "$ " + str(value) + " " + trend_symbol
 
 
 func _on_mouse_entered() -> void:

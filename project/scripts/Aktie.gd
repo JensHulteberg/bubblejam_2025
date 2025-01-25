@@ -37,5 +37,5 @@ func min_max_values () -> Vector2:
 	return Vector2(values.min(), values.max())
 
 func trend() -> int:
-	return value - history.back()
+	return value - history.back().value
 	

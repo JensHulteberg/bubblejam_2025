@@ -25,10 +25,11 @@ func generate_stock_list():
 	
 	for stock in Market.aktier:
 		var stock_vis = stock_vis_res.instantiate()
-	
+		
+		stock_vis.stock = stock
 		stock_vis.set_title(stock.name)
 		stock_vis.set_value(stock.value)
-		stock_vis.stock = stock
+		
 		
 		stock_vis.show_description.connect(_on_stock_show_description)
 		

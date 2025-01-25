@@ -1,9 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3t0kc6frluau"]
 
-[ext_resource type="PackedScene" uid="uid://c3gyhwbgwvstj" path="res://scenes/bloomberg_terminal.tscn" id="1_76ug7"]
+[ext_resource type="PackedScene" uid="uid://bfpjsmukvoays" path="res://scenes/bloomberg_terminal.tscn" id="1_76ug7"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xn5i8"]
-[ext_resource type="PackedScene" uid="uid://c4yuxrrsckofx" path="res://scenes/deck.tscn" id="2_j8qy3"]
-[ext_resource type="PackedScene" uid="uid://bdq78udxiavn3" path="res://scenes/card_hand.tscn" id="3_lpqaa"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="5_80qjn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ll76s"]
+shader = ExtResource("5_80qjn")
+shader_parameter/glitchy = false
+shader_parameter/strength = 0.2
+shader_parameter/lod = 0.3
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xn5i8")
@@ -12,21 +22,12 @@ script = ExtResource("1_xn5i8")
 
 [node name="BloombergTerminal" parent="CanvasLayer" instance=ExtResource("1_76ug7")]
 
-[node name="Deck" parent="CanvasLayer" instance=ExtResource("2_j8qy3")]
-anchor_left = 0.641
-anchor_top = 0.725
-anchor_right = 0.803
-anchor_bottom = 0.978
-offset_left = 0.519958
-offset_right = 0.159912
-offset_bottom = -0.160034
+[node name="post_pros" type="CanvasLayer" parent="."]
 
-[node name="CardHand" parent="CanvasLayer" instance=ExtResource("3_lpqaa")]
-anchor_left = 0.032
-anchor_top = 0.714
-anchor_right = 0.64
-anchor_bottom = 0.993
-offset_left = 0.0399971
-offset_top = -0.0800171
-offset_right = -0.200073
-offset_bottom = 0.039978
+[node name="ColorRect" type="ColorRect" parent="post_pros"]
+material = SubResource("ShaderMaterial_ll76s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
