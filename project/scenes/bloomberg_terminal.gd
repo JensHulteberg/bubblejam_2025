@@ -75,7 +75,7 @@ func _on_market_update():
 		timer.tint_progress = Color.YELLOW
 
 func set_money(value):
-	money_label.text = "$ " + str(int(value))
+	money_label.text = "₭ " + str(int(value))
 
 func clear_news():
 	for child in news_list.get_children():
