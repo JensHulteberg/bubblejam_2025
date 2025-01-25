@@ -19,8 +19,9 @@ config/icon="res://icon.svg"
 
 Market="*res://scripts/Borsen.gd"
 PlayerState="*res://scripts/player_state.gd"
-Redaktionen="*res://scripts/redaktionen.gd"
 Util="*res://scripts/util.gd"
+Redaktionen="*res://scripts/redaktionen.gd"
+SfxPlayer="*res://scripts/sfx_player.gd"
 
 [display]
 

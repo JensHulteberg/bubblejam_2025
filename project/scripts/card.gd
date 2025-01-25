@@ -69,6 +69,7 @@ func _on_button_button_down() -> void:
 func sell():
 	Market.sell_stock(stock_id)
 	emit_signal("card_sold")
+	SfxPlayer.play_sfx("got_it")
 
 func _on_button_button_up() -> void:
 	dragging = false
