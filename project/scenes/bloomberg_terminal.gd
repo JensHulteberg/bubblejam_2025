@@ -17,6 +17,7 @@ var money_tween
 @onready var deck: Deck = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Deck
 @onready var card_hand: CardHand = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/CardHand
 @onready var date_label = $VBoxContainer/header/HBoxContainer/date
+@onready var sell_color_background = $VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/sell_color
 
 func _ready() -> void:
 	clear_news()
@@ -94,3 +95,11 @@ func _on_news_published(article):
 	var scrollbar = news_scroll_cont.get_v_scroll_bar()
 	scrollbar.ratio = 0
 	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	sell_color_background.color = Color.BLUE
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	sell_color_background.color = Color.TRANSPARENT
