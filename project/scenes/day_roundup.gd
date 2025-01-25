@@ -30,6 +30,10 @@ func fail_to_pay():
 	$AnimationPlayer.play("overdue_warning")
 	await $AnimationPlayer.animation_finished
 
+func clear_payment():
+	$AnimationPlayer.play("payed_message")
+	await $AnimationPlayer.animation_finished
+
 func fade_in():
 	$AnimationPlayer.play("fade_in")
 	await $AnimationPlayer.animation_finished
