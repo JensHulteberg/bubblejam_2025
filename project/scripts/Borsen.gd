@@ -48,6 +48,8 @@ func init_stocks() -> void:
 	for a in aktier: 
 		a.value = rng.randi_range(5, 100)
 		a.amount = rng.randi_range(100, 10000)
+		a.upper_bound = rng.randi_range(0, 10)
+		a.lower_bound = -rng.randi_range(0, 10)
 		for i in range(0, 100):
 			a.step_value()
 	
