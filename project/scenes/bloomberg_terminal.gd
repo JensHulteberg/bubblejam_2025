@@ -22,12 +22,12 @@ var money_tween
 func _ready() -> void:
 	clear_news()
 	generate_stock_list()
-	PlayerState.money += 1000
 	
 	PlayerState.money_updated.connect(_on_money_updated)
 	Market.market_update.connect(_on_market_update)
 	
 	Redaktionen.news_published.connect(_on_news_published)
+	_on_money_updated(0, PlayerState.money)
 
 func set_date(date):
 	date_label.text = date

@@ -1,9 +1,12 @@
 extends Node
 
 var days = ["Day_1"]
-var day_index = 1
+var day_index = 0
 
-var scene = preload("res://scenes/bloomberg_terminal.tscn")
+var bt = preload("res://scenes/bloomberg_terminal.tscn")
+var day_begin = preload("res://scenes/day_presentation.tscn")
+var day_end = preload("res://scenes/day_roundup.tscn")
+
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
@@ -11,17 +14,31 @@ var day_length: int = 5
 var tick: int = 0
 
 func _ready() -> void:
-	init_terminal()
 	Market.market_update.connect(_on_market_update)
+	begin_day()
 
+
+func begin_day() -> void:
+	day_index += 1
+	PlayerState.save_day_begin(day_index)
+	var day = day_begin.instantiate()
+	$CanvasLayer.add_child(day)
+	await day.fade_in("MARKET OPENING DAY %s" % day_index)
+	init_terminal()
+	await day.fade_out()
 
 func init_terminal() -> void:
-	bloomberg_terminal = scene.instantiate()
+	bloomberg_terminal = bt.instantiate()
 	$CanvasLayer.add_child(bloomberg_terminal)
 	bloomberg_terminal.set_timeout(day_length)
-
+	bloomberg_terminal.set_date(date(day_index))
+	
 	card_manager.init(bloomberg_terminal.deck, bloomberg_terminal.card_hand)
 	Market.start_day()
+	
+	
+func date(day: int) -> String:
+	return "%s DEC 2057" % (day + 6)
 
 func publish_news(id):
 	Redaktionen.publish_news_item(id)
@@ -33,12 +50,18 @@ func _on_market_update() -> void:
 		_on_day_over("")
 
 func _on_day_over(anim_name):
-	print("DAY OVER DO STUFF")
 	Market.end_day()
 	card_manager.save_cards_to_player_state()
+	PlayerState.save_day_end(day_index)
+
 	bloomberg_terminal.queue_free()
 	
-	print("NEW SCENE")
-	day_length = 10
-	init_terminal()
+	var day_end_stats = PlayerState.get_day_end(day_index)
 	
+	var day = day_end.instantiate()
+	$CanvasLayer.add_child(day)
+	day.init(day_index, day_end_stats.money, day_end_stats.stocks)
+	await day.fade_in()
+	await day.fade_out()
+	
+	begin_day()

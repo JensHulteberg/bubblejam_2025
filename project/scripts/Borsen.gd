@@ -62,6 +62,7 @@ func end_day() -> void:
 	timer.stop()
 
 func start_day() -> void:
+	update_stock_rngs()
 	timer.start()
 	
 func _on_timer_timeout() -> void:
@@ -78,10 +79,14 @@ func init_stocks() -> void:
 	for a in aktier: 
 		a.value = rng.randi_range(5, 100)
 		a.amount = rng.randi_range(100, 10000)
-		a.upper_bound = rng.randi_range(0, 10)
-		a.lower_bound = -rng.randi_range(0, 10)
 		for i in range(0, 100):
 			a.step_value()
+	update_stock_rngs()
+	
+func update_stock_rngs() -> void:
+	for a in aktier: 
+		a.upper_bound = rng.randi_range(0, 10)
+		a.lower_bound = -rng.randi_range(0, 10)
 	
 func buy_stock(stock_id: int) -> bool:
 	for a in aktier:
@@ -119,3 +124,4 @@ func manipulate_stock(id: int, ticks: int, only_up: bool = false, only_down: boo
 	for a in aktier:
 		if a.id == id:
 			a.manipulate(ticks, only_up, only_down, boost)
+			

@@ -6,8 +6,6 @@ var deck: Deck
 var hand: CardHand
 
 
-
-
 func _ready():
 	set_process_input(true)
 	PlayerState.draw_card.connect(draw_full)
@@ -23,6 +21,8 @@ func _input(event: InputEvent):
 func _on_add_card_to_deck(card):
 	deck.add_card_to_bottom(card)
 	deck.shuffle()
+	
+	
 
 func init(deck_, hand_):
 	deck = deck_
@@ -41,6 +41,7 @@ func save_cards_to_player_state() -> void:
 	ids.append_array(hand.cards.map(func(c): return c.stock_id))
 	
 	PlayerState.deck = ids.map(func(i): return {"stock": Market.get_aktie_by_id(i), "amount": 1})
+	hand
 
 func draw_full():
 	for i in range(hand.hand_spots_left()):
@@ -55,10 +56,11 @@ func pull_card():
 		return
 	
 	var z_index_before = card.z_index
-	card.reparent(self)
 	card.offset = 0
 	card.global_position = deck.global_position + (deck.size / 2) - (card.size / 2)
 	await _to_hand(card)
+	if hand == null:
+		return
 	hand.add_card(card)
 	await hand.visualize()
 	card.z_index = z_index_before
