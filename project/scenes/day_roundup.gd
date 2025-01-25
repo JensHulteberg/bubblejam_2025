@@ -4,7 +4,7 @@ func _ready() -> void:
 	set_process(false)
 
 func init(day_num: int, cash: int, stocks_value: int, licence_fee: int):
-	$CenterContainer/VBoxContainer/Label.text = "MARKET CLOSING DAY " + str(day_num) + " ₭"
+	$CenterContainer/VBoxContainer/Label.text = "MARKET CLOSING DAY " + str(day_num)
 	$CenterContainer/VBoxContainer/HBoxContainer/Label2.text = str(cash) + " ₭"
 	$CenterContainer/VBoxContainer/HBoxContainer2/Label2.text = str(stocks_value) + " ₭"
 	$CenterContainer/VBoxContainer/HBoxContainer4/Label2.text = str(cash + stocks_value - licence_fee) + " ₭"

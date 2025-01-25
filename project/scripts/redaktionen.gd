@@ -118,7 +118,7 @@ func _ready() -> void:
 	
 func reset() -> void:
 	#published_news = []
-	news_timer_limit = 0
+	news_timer = 0
 	
 func _on_market_update() -> void:
 	news_timer += 1
@@ -137,7 +137,9 @@ func publish_bubble_news_item() -> void:
 		publish_news_item(news_item)
 	
 func publish_burst_news_item() -> void:
-	pass
+	var news_item = burst_news.pop_front()
+	if news_item != null:
+		publish_news_item(news_item)
 	
 func publish_random_news_item() -> void:
 	var publish_me = news.filter(func(n): return published_news.find(n) < 0).pick_random()

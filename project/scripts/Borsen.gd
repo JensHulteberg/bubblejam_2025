@@ -60,13 +60,16 @@ func _ready() -> void:
 	add_child(timer)
 	timer.wait_time = 1.0
 	timer.connect("timeout", _on_timer_timeout)
+	timer.paused = true
+	timer.start()
 
 func end_day() -> void:
-	timer.stop()
+	timer.paused = true
+	stock_update_ticks = 0
 
 func start_day() -> void:
 	update_stock_rngs()
-	timer.start()
+	timer.paused = false
 	
 func _on_timer_timeout() -> void:
 	stock_update_ticks += 1

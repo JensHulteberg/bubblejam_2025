@@ -1,7 +1,7 @@
 extends Node
 
 var days = ["Day_1"]
-var day_index = 0
+var day_index = 7
 
 var bt = preload("res://scenes/bloomberg_terminal.tscn")
 var day_begin = preload("res://scenes/day_presentation.tscn")
