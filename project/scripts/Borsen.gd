@@ -60,3 +60,5 @@ func update() -> void:
 		a.step_value()
 	emit_signal("market_update")
 	
+func get_industry_by_id(id: int) -> Industri:
+	return industrys.filter(func(i): return i.id == id).front();

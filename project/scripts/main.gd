@@ -11,8 +11,7 @@ func _ready() -> void:
 	$AnimationPlayer.animation_finished.connect(_on_day_over)
 	$CanvasLayer/BloombergTerminal.set_timeout(90)
 
-	card_manager.deck = bloomberg_terminal.deck
-	card_manager.hand = bloomberg_terminal.card_hand
+	card_manager.init(bloomberg_terminal.deck, bloomberg_terminal.card_hand)
 
 func publish_news(id):
 	Redaktionen.publish_news_item(id)

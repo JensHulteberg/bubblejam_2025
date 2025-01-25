@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnfw4f03iw2rr"]
+[gd_scene load_steps=9 format=3 uid="uid://cnfw4f03iw2rr"]
 
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_1k8w5"]
 [ext_resource type="Texture2D" uid="uid://d20mbtve1i25l" path="res://graphics/card.png" id="1_76pk6"]
 [ext_resource type="FontFile" uid="uid://dvq10v8yvlpwh" path="res://Silver.ttf" id="2_80mig"]
 [ext_resource type="Texture2D" uid="uid://bqf05h7odh3or" path="res://graphics/placeholder_card_image.png" id="3_a5t68"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3sj2j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_am7u1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xgea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p01li"]
 
 [node name="Card" type="Control"]
 z_index = 20
@@ -69,3 +77,20 @@ size_flags_vertical = 3
 [node name="ImageTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 texture = ExtResource("3_a5t68")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3sj2j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_am7u1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8xgea")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p01li")
+action_mode = 0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
