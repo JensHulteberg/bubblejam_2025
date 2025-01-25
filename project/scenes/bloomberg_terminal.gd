@@ -24,6 +24,8 @@ func _ready() -> void:
 	
 	PlayerState.money_updated.connect(_on_money_updated)
 	Market.market_update.connect(_on_market_update)
+	
+	Redaktionen.news_published.connect(_on_news_published)
 
 func set_timeout(time):
 	timer.max_value = time
@@ -72,9 +74,10 @@ func clear_news():
 	for child in news_list.get_children():
 		child.free()
 
-func add_news(title, desc):
+func _on_news_published(article):
+	
 	var news_list_item = news_item_res.instantiate()
-	news_list_item.set_news(title, desc)
+	news_list_item.set_news(article.title, article.description)
 	news_list.add_child(news_list_item)
 	news_list.move_child(news_list_item, 0)
 	var scrollbar = news_scroll_cont.get_v_scroll_bar()

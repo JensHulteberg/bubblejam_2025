@@ -14,5 +14,8 @@ func _ready() -> void:
 	card_manager.deck = bloomberg_terminal.deck
 	card_manager.hand = bloomberg_terminal.card_hand
 
+func publish_news(id):
+	Redaktionen.publish_news_item(id)
+
 func _on_day_over(anim_name):
 	get_tree().quit()

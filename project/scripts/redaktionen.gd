@@ -15,7 +15,8 @@ func get_latest_news_item() -> News:
 	return news.front()
 
 func publish_news_item(id: int) -> void:
-	var news_to_publish = news.filter(func(n): return n.id == id)
+	var news_to_publish = news.filter(func(n): return n.id == id).front()
+
 	if news_to_publish != null:
 		published_news.push_front(news)
-	emit_signal("news_published", news)
+		emit_signal("news_published", news_to_publish)

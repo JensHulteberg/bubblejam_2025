@@ -26,6 +26,7 @@ text = "NEWS!"
 layout_mode = 2
 text = "Very important news about something interesting!"
 fit_content = true
+visible_characters_behavior = 1
 
 [node name="white_line" parent="VBoxContainer" instance=ExtResource("2_lbp4v")]
 layout_mode = 2
