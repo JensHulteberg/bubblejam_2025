@@ -39,3 +39,10 @@ func init_stocks() -> void:
 		for i in range(0, 100):
 			a.step_value()
 	
+func buy_stock(stock_id: int) -> void:
+	pass
+	
+func update() -> void:
+	for a in aktier: 
+		a.step_value()
+	
