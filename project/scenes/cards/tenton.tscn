@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh7fadxdsx6ny"]
+
+[ext_resource type="PackedScene" uid="uid://cnfw4f03iw2rr" path="res://scenes/card.tscn" id="1_ihfoy"]
+[ext_resource type="Texture2D" uid="uid://bk6u7ujd40y2r" path="res://graphics/tenton_logo.png" id="2_jtchj"]
+
+[node name="tenton" instance=ExtResource("1_ihfoy")]
+card_title = "Tenton"
+image = ExtResource("2_jtchj")
+
+[node name="CardTitleLabel" parent="MarginContainer/VBoxContainer/MarginContainer" index="0"]
+text = "[center]Tenton[/center]"
+
+[node name="ImageTextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2" index="0"]
+texture = ExtResource("2_jtchj")

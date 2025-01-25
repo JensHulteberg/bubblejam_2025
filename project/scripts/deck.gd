@@ -7,9 +7,10 @@ var cards: Array[Card]
 var backside_cards: Array
 
 func _ready():
-	var card = preload("res://scenes/card.tscn")
-	for i in range(50):
-		add_card_to_bottom(card.instantiate())
+	pass
+	#var card = preload("res://scenes/card.tscn")
+	#for i in range(50):
+		#add_card_to_bottom(card.instantiate())
 
 
 func add_card_to_bottom(card: Card):

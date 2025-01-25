@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1fpdd86g4mix"]
+
+[ext_resource type="PackedScene" uid="uid://cnfw4f03iw2rr" path="res://scenes/card.tscn" id="1_avu3b"]
+[ext_resource type="Script" path="res://scenes/card_market.gd" id="1_nvamf"]
+
+[node name="CardMarket" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 105.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_nvamf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Card" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card2" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card3" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card4" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card5" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card6" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card7" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2
+
+[node name="Card8" parent="HBoxContainer" instance=ExtResource("1_avu3b")]
+layout_mode = 2

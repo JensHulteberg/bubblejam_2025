@@ -66,6 +66,9 @@ func update() -> void:
 	
 func get_industry_by_id(id: int) -> Industri:
 	return industrys.filter(func(i): return i.id == id).front();
+
+func get_aktie_by_id(id: int) -> Aktie:
+	return aktier.filter(func(i): return i.id == id).front();
 	
 func manipulate_industry(id: int, ticks:int, bubble: bool = false, boost: int = 0) -> void:
 	for i in industrys:

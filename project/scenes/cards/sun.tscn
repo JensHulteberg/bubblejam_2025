@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ftglkd7dks33"]
+
+[ext_resource type="PackedScene" uid="uid://cnfw4f03iw2rr" path="res://scenes/card.tscn" id="1_4qtas"]
+[ext_resource type="Texture2D" uid="uid://cc5jip2icau7c" path="res://graphics/sun_logo.png" id="2_oiqjt"]
+
+[node name="SUN" instance=ExtResource("1_4qtas")]
+card_title = "S. U. N."
+image = ExtResource("2_oiqjt")
+
+[node name="CardTitleLabel" parent="MarginContainer/VBoxContainer/MarginContainer" index="0"]
+text = "[center]S. U. N.[/center]"
+
+[node name="ImageTextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2" index="0"]
+texture = ExtResource("2_oiqjt")

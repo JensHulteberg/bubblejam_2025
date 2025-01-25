@@ -36,6 +36,10 @@ var offset:
 		offset_bottom = value
 		
 
+func init(stock):
+	card_title_label.text = stock.name
+	image_texture_rect.texture = load(stock.logo)
+
 func _ready():
 	_sync()
 	pivot_offset.x = custom_minimum_size.x / 2
@@ -58,18 +62,18 @@ func _sync():
 
 func _on_button_button_down() -> void:
 	dragging = true
-	var overlapp = $CenterContainer/Area2D.get_overlapping_areas()
-	print(overlapp)
-	
-	for area in overlapp:
-		
-		if area.is_in_group("sell_area"):
-			sell()
-			return
 
 func sell():
 	PlayerState.money += 100
 
 func _on_button_button_up() -> void:
 	dragging = false
+	var overlapp = $CenterContainer/Area2D.get_overlapping_areas()
+	
+	for area in overlapp:
+		if area.is_in_group("sell_area"):
+			sell()
+			queue_free()
+			return
+	
 	back_to_hand.emit()

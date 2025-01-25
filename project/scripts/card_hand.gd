@@ -11,11 +11,12 @@ var card_manager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var example_card = preload("res://scenes/card.tscn")
-	add_card(example_card.instantiate(), true)
-	add_card(example_card.instantiate(), true)
-	add_card(example_card.instantiate(), true)
-	add_card(example_card.instantiate(), true)
+	pass
+	#var example_card = preload("res://scenes/card.tscn")
+	#add_card(example_card.instantiate(), true)
+	#add_card(example_card.instantiate(), true)
+	#add_card(example_card.instantiate(), true)
+	#add_card(example_card.instantiate(), true)
 	
 	visualize()
 

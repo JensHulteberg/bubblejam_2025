@@ -80,6 +80,7 @@ size_flags_vertical = 3
 [node name="ImageTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 texture = ExtResource("3_a5t68")
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -106,6 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Area2D" type="Area2D" parent="CenterContainer"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterContainer/Area2D"]
 shape = SubResource("RectangleShape2D_1cpea")
