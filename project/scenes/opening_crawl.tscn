@@ -87,6 +87,8 @@ vertical_scroll_mode = 3
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/ScrollContainer/MarginContainer"]
 layout_mode = 2
