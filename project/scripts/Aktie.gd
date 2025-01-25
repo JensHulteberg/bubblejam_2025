@@ -1,5 +1,7 @@
 class_name Aktie
 
+signal aktie_update
+
 var id: int
 var name: String
 var description: String
@@ -27,6 +29,7 @@ func market_cap() -> int:
 func push_value(_value: int) -> void:
 	history.append(HistoricAktie.new(value, amount))
 	value = max(_value, 0)
+	emit_signal("aktie_update")
 	
 func step_value() -> void:
 	push_value(value + Market.rng.randi_range(-10, 10))
@@ -37,5 +40,8 @@ func min_max_values () -> Vector2:
 	return Vector2(values.min(), values.max())
 
 func trend() -> int:
-	return value - history.back().value
+	var look_back_size = 10
+	var look_back = history.slice(history.size() -look_back_size, history.size())
+	var mean_look_back =  look_back.map(func(h): return h.value).reduce(func(v, acc): return v + acc, 0) / look_back_size 
+	return value - mean_look_back
 	
