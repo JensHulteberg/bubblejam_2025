@@ -36,6 +36,12 @@ func init(deck_, hand_):
 			card.init(card_ref.stock)
 			
 
+func save_cards_to_player_state() -> void:
+	var ids = deck.cards.map(func(c): return c.stock_id)
+	ids.append_array(hand.cards.map(func(c): return c.stock_id))
+	
+	PlayerState.deck = ids.map(func(i): return {"stock": Market.get_aktie_by_id(i), "amount": 1})
+
 func draw_full():
 	for i in range(hand.hand_spots_left()):
 		pull_card()

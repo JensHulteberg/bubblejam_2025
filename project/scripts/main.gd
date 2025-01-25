@@ -3,18 +3,42 @@ extends Node
 var days = ["Day_1"]
 var day_index = 1
 
-@onready var bloomberg_terminal: MarginContainer = $CanvasLayer/BloombergTerminal
+var scene = preload("res://scenes/bloomberg_terminal.tscn")
+var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
+var day_length: int = 5
+var tick: int = 0
+
 func _ready() -> void:
-	$AnimationPlayer.play("day_" + str(day_index))
-	$AnimationPlayer.animation_finished.connect(_on_day_over)
-	$CanvasLayer/BloombergTerminal.set_timeout(90)
+	init_terminal()
+	Market.market_update.connect(_on_market_update)
+
+
+func init_terminal() -> void:
+	bloomberg_terminal = scene.instantiate()
+	$CanvasLayer.add_child(bloomberg_terminal)
+	bloomberg_terminal.set_timeout(day_length)
 
 	card_manager.init(bloomberg_terminal.deck, bloomberg_terminal.card_hand)
+	Market.start_day()
 
 func publish_news(id):
 	Redaktionen.publish_news_item(id)
+	
+func _on_market_update() -> void:
+	tick += 1
+	if tick >= day_length:
+		tick = 0
+		_on_day_over("")
 
 func _on_day_over(anim_name):
 	print("DAY OVER DO STUFF")
+	Market.end_day()
+	card_manager.save_cards_to_player_state()
+	bloomberg_terminal.queue_free()
+	
+	print("NEW SCENE")
+	day_length = 10
+	init_terminal()
+	

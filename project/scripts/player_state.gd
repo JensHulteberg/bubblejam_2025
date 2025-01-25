@@ -12,11 +12,12 @@ var card_to_market_timer_limit = 3
 var draw_card_timer = 0
 var card_market_timer = 0
 
-
 var money = 0 :
 	set(value):
 		emit_signal("money_updated", money, value)
 		money = value
+
+var day_stats = []
 
 func _ready() -> void:
 	#deck = [
@@ -28,6 +29,9 @@ func _ready() -> void:
 
 	
 	Market.market_update.connect(_on_market_update)
+
+func save_day_begin() -> void:
+	pass
 
 func _on_market_update():
 	draw_card_timer += 1

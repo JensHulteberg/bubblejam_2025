@@ -21,6 +21,23 @@ var news: Array[News] = [
 
 var published_news: Array[News] = []
 
+var news_timer_limit: int = 10
+var news_timer:int = 0
+
+func _ready() -> void:
+	Market.market_update.connect(_on_market_update)
+	
+func _on_market_update() -> void:
+	news_timer += 1
+	if news_timer >= news_timer_limit:
+		news_timer = 0
+		publish_random_news_item()
+	
+func publish_random_news_item() -> void:
+	var publish_me = news.filter(func(n): return published_news.find(n) < 0).pick_random()
+	if publish_me != null:
+		publish_news_item(publish_me.id)
+		
 func get_latest_news_item() -> News:
 	return news.front()
 
