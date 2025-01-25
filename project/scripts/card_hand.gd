@@ -7,6 +7,7 @@ const MAX_Y_OFFSET: float = 0.05
 
 var cards: Array[Card]
 
+var card_manager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +24,8 @@ func add_card(card: Card, initial: bool = false):
 	if cards.size() == MAX_NUM_CARDS:
 		return false
 	
+	card.back_to_hand.connect(back_to_hand.bind(card))
+	
 	cards.append(card)
 	if card.get_parent() == null:
 		add_child(card)
@@ -35,6 +38,10 @@ func add_card(card: Card, initial: bool = false):
 		card.anchor_y = 0.5
 	
 	return true
+
+
+func back_to_hand(card: Card):
+	card_manager.back_to_hand(card)
 
 
 func at_limit():
