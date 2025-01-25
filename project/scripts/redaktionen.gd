@@ -18,5 +18,5 @@ func publish_news_item(id: int) -> void:
 	var news_to_publish = news.filter(func(n): return n.id == id).front()
 
 	if news_to_publish != null:
-		published_news.push_front(news)
+		published_news.push_front(news_to_publish)
 		emit_signal("news_published", news_to_publish)
