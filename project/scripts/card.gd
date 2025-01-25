@@ -11,6 +11,8 @@ extends Control
 
 func _ready():
 	_sync()
+	pivot_offset.x = custom_minimum_size.x / 2
+	pivot_offset.y = custom_minimum_size.y / 2
 
 func _process(delta: float):
 	if Engine.is_editor_hint():
