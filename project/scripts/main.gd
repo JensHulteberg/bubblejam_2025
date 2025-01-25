@@ -10,7 +10,7 @@ var day_end = preload("res://scenes/day_roundup.tscn")
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
-var day_length: int = 90
+var day_length: int = 10
 var tick: int = 0
 
 func _ready() -> void:
@@ -62,13 +62,15 @@ func _on_day_over(anim_name):
 	
 	var day = day_end.instantiate()
 	$CanvasLayer.add_child(day)
-	day.init(day_index, day_end_stats.money, day_end_stats.stocks)
+	day.init(day_index, day_end_stats.money, day_end_stats.stocks, day_end_stats.terminal_fee)
 	await day.fade_in()
-	await day.fade_out()
 	
-	if day_end_stats.money - day_end_stats.terminal_fee:
-		print("YOU ARE DEAD")
+	if day_end_stats.money - day_end_stats.terminal_fee < 0:
+		await day.fail_to_pay()
+		await day.fade_out()
 	else:
+		PlayerState.money -= day_end_stats.terminal_fee
+		await day.fade_out()
 		begin_day()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vps5mtpio7kl"]
+[gd_scene load_steps=10 format=3 uid="uid://vps5mtpio7kl"]
 
 [ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_r3xox"]
 [ext_resource type="Script" path="res://scenes/day_roundup.gd" id="2_4datp"]
@@ -160,7 +160,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "Licence fee:"
+text = "License fee:"
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2

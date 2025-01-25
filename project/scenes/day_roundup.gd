@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 	$CenterContainer/VBoxContainer/HBoxContainer/Label2.visible_characters += 1
 	$CenterContainer/VBoxContainer/HBoxContainer2/Label2.visible_characters += 1
 	$CenterContainer/VBoxContainer/HBoxContainer4/Label2.visible_characters += 1
+	$CenterContainer/VBoxContainer/HBoxContainer3/Label2.visible_characters += 1
+
 
 func fail_to_pay():
 	$AnimationPlayer.play("overdue_warning")
