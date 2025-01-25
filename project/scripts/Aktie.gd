@@ -9,12 +9,14 @@ var amount: int
 var value: int
 
 # base rngs stats
-var test = 0
+var upper_bound = 10
+var lower_bound = -10
 
 # Manipulations
 var reset_ticks: int = 0
 var only_up: bool = false
 var only_down: bool = false
+var boost: int = 0
 
 var industry_id: int
 
@@ -42,9 +44,9 @@ func push_value(_value: int) -> void:
 	emit_signal("aktie_update")
 	
 func step_value() -> void:
-	var lower = -10
-	var upper = 10
-	
+	var lower = lower_bound
+	var upper = upper_bound
+
 	if only_up:
 		lower = 1
 		upper += 1
@@ -53,10 +55,18 @@ func step_value() -> void:
 		upper = -1
 		lower -= 1
 	
+	var delta = Market.rng.randi_range(lower, upper)
 	if reset_ticks > 0:
+		delta += boost
 		reset_ticks -= 1
+		
+	var industry = Market.get_industry_by_id(industry_id)
+	delta = industry.get_industry_manipulation(delta)
+
+	push_value(value + delta)
+	
+	if reset_ticks <= 0:
 		reset_manipulation()
-	push_value(value + Market.rng.randi_range(lower, upper))
 	
 func min_max_values () -> Vector2:
 	var values = history.map(func(h): return h.value)
@@ -69,12 +79,14 @@ func trend() -> int:
 	var mean_look_back =  look_back.map(func(h): return h.value).reduce(func(v, acc): return v + acc, 0) / look_back_size 
 	return value - mean_look_back
 
-func manipulate(ticks: int, only_up: bool = false, only_down: bool = false) -> void:
+func manipulate(ticks: int, _only_up: bool = false, _only_down: bool = false, _boost = 0) -> void:
 	reset_ticks = ticks
-	only_up = only_up
-	only_down = only_down
+	only_up = _only_up
+	only_down = _only_down
+	boost = _boost
 	
 func reset_manipulation() -> void:
 	reset_ticks = 0
 	only_up = false
 	only_down = false
+	boost = 0
