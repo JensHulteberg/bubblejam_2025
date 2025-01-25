@@ -74,9 +74,9 @@ func _on_money_updated(old_val, new_val):
 func _on_market_update():
 	graph.redraw_graph()
 	timer.value -= 1
-	if timer.value < 10:
+	if timer.value < 5:
 		timer.tint_progress = Color.RED
-	elif timer.value < 30:
+	elif timer.value < 10:
 		timer.tint_progress = Color.YELLOW
 
 func set_money(value):

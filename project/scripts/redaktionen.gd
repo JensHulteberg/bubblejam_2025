@@ -21,7 +21,7 @@ var news: Array[News] = [
 
 var published_news: Array[News] = []
 
-var news_timer_limit: int = 20
+var news_timer_limit: int = 8
 var news_timer:int = 0
 
 func _ready() -> void:
@@ -29,6 +29,7 @@ func _ready() -> void:
 	
 func reset() -> void:
 	published_news = []
+	news_timer_limit = 0
 	
 func _on_market_update() -> void:
 	news_timer += 1

@@ -50,6 +50,9 @@ var rng = RandomNumberGenerator.new()
 
 var timer: Timer
 
+var stock_update_delay: int = 3
+var stock_update_ticks: int = 0
+
 func _ready() -> void:
 	rng.seed = 12345
 	init_stocks()
@@ -66,8 +69,10 @@ func start_day() -> void:
 	timer.start()
 	
 func _on_timer_timeout() -> void:
-	update()
-	PlayerState
+	stock_update_ticks += 1
+	if stock_update_ticks >= stock_update_delay:
+		update()
+		stock_update_ticks = 0
 	
 func print_stocks() -> void:
 	for a in aktier:
@@ -87,6 +92,7 @@ func update_stock_rngs() -> void:
 	for a in aktier: 
 		a.upper_bound = rng.randi_range(0, 10)
 		a.lower_bound = -rng.randi_range(0, 10)
+		a.base_boost = rng.randi_range(-3, 3)
 	
 func buy_stock(stock_id: int) -> bool:
 	for a in aktier:

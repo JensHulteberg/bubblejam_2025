@@ -13,6 +13,7 @@ var sell_spell: Callable
 # base rngs stats
 var upper_bound = 10
 var lower_bound = -10
+var base_boost = 0
 
 # Manipulations
 var reset_ticks: int = 0
@@ -59,7 +60,7 @@ func step_value() -> void:
 		upper = -1
 		lower -= 1
 	
-	var delta = Market.rng.randi_range(lower, upper)
+	var delta = Market.rng.randi_range(lower, upper) + base_boost
 	if reset_ticks > 0:
 		delta += boost
 		reset_ticks -= 1
