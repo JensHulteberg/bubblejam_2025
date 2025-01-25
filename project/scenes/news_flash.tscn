@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv3if0sftqybh"]
+[gd_scene load_steps=4 format=3 uid="uid://bv3if0sftqybh"]
 
 [ext_resource type="Theme" uid="uid://qqmlxtvicreu" path="res://graphics/master_theme.tres" id="1_yk1y0"]
+[ext_resource type="Script" path="res://scenes/news_flash.gd" id="2_cyy88"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_lbp4v"]
 
 [node name="NewsFlash" type="MarginContainer"]
@@ -12,6 +13,7 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
+script = ExtResource("2_cyy88")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

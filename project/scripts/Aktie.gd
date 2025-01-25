@@ -2,6 +2,7 @@ class_name Aktie
 
 var id: int
 var name: String
+var description: String
 var amount: int
 var value: int
 var industry_id: int
@@ -11,6 +12,7 @@ func _init(_id: int, _name: , _industry: int) -> void:
 	id = _id
 	name = _name
 	industry_id = _industry
+	description = "Lorem ipsum."
 	
 func print_me() -> void:
 	print("id: %s name: %s amount: %s value: %s market_cap: %s" % [id, name, amount, value, market_cap()])
