@@ -13,6 +13,7 @@ func init(stock):
 	$VBoxContainer.move_child(card, 0)
 	 
 	card.init(stock)
+	card.disable()
 	card_on_sale = card
 	
 	
@@ -23,4 +24,5 @@ func _on_button_button_down() -> void:
 	if can_buy:
 		SfxPlayer.play_sfx("positive")
 		PlayerState.emit_signal("add_card_to_deck", card_on_sale)
+		card_on_sale.enable()
 		queue_free()

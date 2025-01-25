@@ -6,6 +6,7 @@ var loop_count = 0
 func _ready() -> void:
 	$AnimationPlayer.animation_finished.connect(_on_anim_finished)
 	$AnimationPlayer.play("death_anim")
+	MusicPlayer.stop()
 	
 
 func _on_anim_finished(anim_name):

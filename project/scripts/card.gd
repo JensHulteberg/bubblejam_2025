@@ -8,10 +8,13 @@ signal card_sold
 @export var image: Texture2D = preload("res://graphics/placeholder_card_image.png")
 @export var description: String
 
-@onready var card_title_label: RichTextLabel = $MarginContainer/VBoxContainer/MarginContainer/CardTitleLabel
+@onready var card_title_label: Label = $MarginContainer/VBoxContainer/MarginContainer/CardTitleLabel
 @onready var image_texture_rect: TextureRect = $MarginContainer/VBoxContainer/MarginContainer2/ImageTextureRect
 
 @onready var button: Button = $Button
+
+var hover_tween
+var hover_y_anchor = 0
 
 var dragging: bool = false
 var stock_id: int
@@ -43,6 +46,12 @@ func init(stock):
 	image_texture_rect.texture = load(stock.logo)
 	stock_id = stock.id
 
+func disable():
+	$Button.disabled = true
+
+func enable():
+	$Button.disabled = false
+
 func _ready():
 	_sync()
 	pivot_offset.x = custom_minimum_size.x / 2
@@ -62,15 +71,15 @@ func _sync():
 	card_title_label.text = "[center]" + card_title + "[/center]"
 	image_texture_rect.texture = image
 
-
-func _on_button_button_down() -> void:
-	dragging = true
-
 func sell():
 	SfxPlayer.play_sfx("positronic")
 	PlayerState.emit_signal("explode_particles")
 	Market.sell_stock(stock_id)
 	emit_signal("card_sold")
+
+func _on_button_button_down() -> void:
+	dragging = true
+
 
 func _on_button_button_up() -> void:
 	dragging = false
@@ -82,3 +91,11 @@ func _on_button_button_up() -> void:
 			return
 	
 	back_to_hand.emit()
+
+
+func _on_button_mouse_entered() -> void:
+	$Panel.self_modulate = Color.PURPLE
+
+
+func _on_button_mouse_exited() -> void:
+	$Panel.self_modulate = Color.WHITE

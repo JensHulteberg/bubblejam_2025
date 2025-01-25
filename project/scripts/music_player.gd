@@ -9,7 +9,6 @@ func _ready() -> void:
 	pass
 	#play_song("intro")
 
-
 func play_song(name: String):
 	if playing:
 		var tween = create_tween()

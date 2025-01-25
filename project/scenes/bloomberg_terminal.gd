@@ -14,10 +14,11 @@ var money_tween
 @onready var timer = $VBoxContainer/header/HBoxContainer/TextureProgressBar
 
 
-@onready var deck: Deck = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Deck
+@onready var deck: Deck = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Panel/Deck
 @onready var card_hand: CardHand = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/CardHand
 @onready var date_label = $VBoxContainer/header/HBoxContainer/date
 @onready var sell_color_background = $VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/sell_color
+@onready var sell_emitter = $VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/GPUParticles2D
 
 func _ready() -> void:
 	clear_news()
@@ -27,6 +28,7 @@ func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
 	
 	Redaktionen.news_published.connect(_on_news_published)
+	PlayerState.explode_particles.connect(_emit_sell_particles)
 	_on_money_updated(0, PlayerState.money)
 
 func set_date(date):
@@ -104,3 +106,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	sell_color_background.color = Color.TRANSPARENT
+
+func _emit_sell_particles():
+	sell_emitter.restart()
+	sell_emitter.emitting = true
+	$AnimationPlayer.play("sell_flicker")

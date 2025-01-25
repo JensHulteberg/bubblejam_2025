@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnfw4f03iw2rr"]
+[gd_scene load_steps=13 format=3 uid="uid://cnfw4f03iw2rr"]
 
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_1k8w5"]
 [ext_resource type="Texture2D" uid="uid://d20mbtve1i25l" path="res://graphics/card.png" id="1_76pk6"]
 [ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_j0ov4"]
-[ext_resource type="FontFile" uid="uid://dvq10v8yvlpwh" path="res://Silver.ttf" id="2_80mig"]
-[ext_resource type="Texture2D" uid="uid://bqf05h7odh3or" path="res://graphics/placeholder_card_image.png" id="3_a5t68"]
+[ext_resource type="Texture2D" uid="uid://bhp64a1eaued" path="res://graphics/alashnitev_logo.png" id="3_wkq45"]
+[ext_resource type="FontFile" uid="uid://cq3y0sjiv32pm" path="res://fonts/Mx437_DOS-V_re_JPN12.ttf" id="4_0vb6g"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="6_5bnma"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ismf6"]
 bg_color = Color(0, 0, 0, 1)
@@ -44,6 +45,7 @@ pivot_offset = Vector2(48, 128)
 theme = ExtResource("1_j0ov4")
 script = ExtResource("1_1k8w5")
 card_title = "Card"
+image = ExtResource("3_wkq45")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -89,14 +91,17 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 12
 
-[node name="CardTitleLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="CardTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_80mig")
-theme_override_font_sizes/normal_font_size = 19
-bbcode_enabled = true
+theme_override_fonts/font = ExtResource("4_0vb6g")
+theme_override_font_sizes/font_size = 12
 text = "[center]Card[/center]"
-fit_content = true
-scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="white_line" parent="MarginContainer/VBoxContainer" instance=ExtResource("6_5bnma")]
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,7 +109,7 @@ size_flags_vertical = 3
 
 [node name="ImageTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("3_a5t68")
+texture = ExtResource("3_wkq45")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -137,3 +142,5 @@ shape = SubResource("RectangleShape2D_1cpea")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

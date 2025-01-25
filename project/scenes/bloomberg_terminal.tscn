@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfpjsmukvoays"]
+[gd_scene load_steps=23 format=3 uid="uid://bfpjsmukvoays"]
 
 [ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
@@ -26,6 +26,75 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1emk"]
 size = Vector2(75, 105)
+
+[sub_resource type="Curve" id="Curve_ul06x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.964687, 0), -2.59279, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x8ljj"]
+curve = SubResource("Curve_ul06x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0i874"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 64, 1)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 131.3
+initial_velocity_max = 174.61
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_x8ljj")
+color = Color(0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_bqe4y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.578696)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j83y7"]
+gradient = SubResource("Gradient_bqe4y")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_c6f1e"]
+resource_name = "sell_flicker"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/sell_color:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 0), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jk7oa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/sell_color:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6ke8"]
+_data = {
+"RESET": SubResource("Animation_jk7oa"),
+"sell_flicker": SubResource("Animation_c6f1e")
+}
 
 [node name="BloombergTerminal" type="MarginContainer"]
 anchors_preset = 15
@@ -94,7 +163,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.5
+size_flags_stretch_ratio = 2.35
 theme_override_constants/separation = 32
 
 [node name="stonk_list" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left"]
@@ -167,7 +236,7 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer"]
 layout_mode = 2
-text = "GRAPH"
+text = "INFO"
 
 [node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer" instance=ExtResource("2_jx0n4")]
 layout_mode = 2
@@ -260,7 +329,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="sell" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -301,6 +370,22 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/Area2D"]
 shape = SubResource("RectangleShape2D_x1emk")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer"]
+visible = false
+z_index = 1
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_0i874")
+texture = SubResource("GradientTexture2D_j83y7")
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.59
+randomness = 1.0
+trail_enabled = true
+trail_sections = 4
+trail_section_subdivisions = 1
+
 [node name="sell_color" type="ColorRect" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell"]
 layout_mode = 1
 anchors_preset = 15
@@ -308,7 +393,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 0, 0)
+color = Color(0, 0, 1, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/main_layout/VBoxContainer"]
 layout_mode = 2
@@ -317,14 +402,26 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Deck" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("8_0qqq5")]
+[node name="Panel" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+
+[node name="Deck" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Panel" instance=ExtResource("8_0qqq5")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="CardHand" parent="VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_u7vq2")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer" instance=ExtResource("2_jx0n4")]
+visible = false
+layout_mode = 2
 
 [node name="news" type="VBoxContainer" parent="VBoxContainer/main_layout"]
 layout_mode = 2
@@ -339,6 +436,7 @@ layout_mode = 2
 text = "NEWS"
 
 [node name="white_line" parent="VBoxContainer/main_layout/news/VBoxContainer" instance=ExtResource("2_jx0n4")]
+visible = false
 layout_mode = 2
 
 [node name="news" type="Panel" parent="VBoxContainer/main_layout/news"]
@@ -390,6 +488,11 @@ layout_mode = 2
 
 [node name="NewsFlash10" parent="VBoxContainer/main_layout/news/news/ScrollContainer/VBoxContainer" instance=ExtResource("3_kvf7m")]
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t6ke8")
+}
 
 [connection signal="area_entered" from="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/Area2D" to="." method="_on_area_2d_area_exited"]
