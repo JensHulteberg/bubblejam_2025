@@ -1,9 +1,9 @@
 extends Control
 
 const MAX_NUM_CARDS: int = 7
-const MAX_ROT: float = 20.0
-const MAX_X_OFFSET: float = 0.4
-const MAX_Y_OFFSET: float = 0.1
+const MAX_ROT: float = 5.0
+const MAX_X_OFFSET: float = 0.2
+const MAX_Y_OFFSET: float = 0.05
 
 var cards: Array[Card]
 
@@ -14,15 +14,24 @@ func _ready() -> void:
 	add_card(example_card.instantiate())
 	add_card(example_card.instantiate())
 	add_card(example_card.instantiate())
+	add_card(example_card.instantiate())
 
 
 func add_card(card: Card):
 	if cards.size() == MAX_NUM_CARDS:
 		return false
 	
+	card.rotation_degrees = 0
+	card.anchor_left = 0.5
+	card.anchor_right = 0.5
+	card.anchor_top = 0.5
+	card.anchor_bottom = 0.5
+	
 	cards.append(card)
 	add_child(card)
 	visualize()
+	
+	return true
 
 
 func visualize():
@@ -34,14 +43,17 @@ func visualize():
 func _visualize_card(index: int, card: Card):
 	var mid_point = (cards.size() - 1) / 2.0
 	var index_offset = mid_point - index
-	var offset_float = index_offset / (MAX_NUM_CARDS / 2.0)
+	var offset_float = index_offset / ((MAX_NUM_CARDS - 1) / 2.0)
 	
 	var rot = MAX_ROT * offset_float
-	card.rotation_degrees = rot
 	
 	var x = 0.5 + offset_float * MAX_X_OFFSET
 	var y = 0.5 + abs(offset_float) * MAX_Y_OFFSET
-	card.anchor_left = x
-	card.anchor_right = x
-	card.anchor_top = y
-	card.anchor_bottom = y
+	
+	var duration = 0.2
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(card, "rotation_degrees", rot, duration)
+	tween.tween_property(card, "anchor_left", x, duration)
+	tween.tween_property(card, "anchor_right", x, duration)
+	tween.tween_property(card, "anchor_top", y, duration)
+	tween.tween_property(card, "anchor_bottom", y, duration)
