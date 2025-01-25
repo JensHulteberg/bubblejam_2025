@@ -56,11 +56,17 @@ func _ready() -> void:
 	timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 1.0
-	timer.start()
 	timer.connect("timeout", _on_timer_timeout)
+
+func end_day() -> void:
+	timer.stop()
+
+func start_day() -> void:
+	timer.start()
 	
 func _on_timer_timeout() -> void:
 	update()
+	PlayerState
 	
 func print_stocks() -> void:
 	for a in aktier:

@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3t0kc6frluau"]
+[gd_scene load_steps=8 format=3 uid="uid://d3t0kc6frluau"]
 
-[ext_resource type="PackedScene" uid="uid://c3gyhwbgwvstj" path="res://scenes/bloomberg_terminal.tscn" id="1_76ug7"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xn5i8"]
 [ext_resource type="PackedScene" uid="uid://bu7k3wmq5b07l" path="res://scenes/card_manager.tscn" id="3_pgutm"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="5_80qjn"]
@@ -50,8 +49,6 @@ script = ExtResource("1_xn5i8")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CardManager" parent="CanvasLayer" instance=ExtResource("3_pgutm")]
-
-[node name="BloombergTerminal" parent="CanvasLayer" instance=ExtResource("1_76ug7")]
 
 [node name="post_pros" type="CanvasLayer" parent="."]
 
