@@ -1,7 +1,7 @@
 extends Node2D
 
-var width: float = 492
-var height: float = 91
+@export var width: float = 492
+@export var height: float = 91
 var aktie: Aktie 
 
 func set_stock(_aktie: Aktie) -> void:

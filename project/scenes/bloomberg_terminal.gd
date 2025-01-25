@@ -10,7 +10,7 @@ var money_tween
 @onready var news_list = $VBoxContainer/main_layout/news/news/ScrollContainer/VBoxContainer
 @onready var news_scroll_cont = $VBoxContainer/main_layout/news/news/ScrollContainer
 @onready var money_label = $VBoxContainer/header/HBoxContainer/money
-@onready var graph = $VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box/stonk_graph/CenterContainer/StockGraph
+@onready var graph = $VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box/stonk_graph/MarginContainer/CenterContainer/StockGraph
 
 func _ready() -> void:
 	clear_news()
