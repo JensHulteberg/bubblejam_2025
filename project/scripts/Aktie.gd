@@ -8,6 +8,7 @@ var description: String
 var amount: int
 var value: int
 var logo: String
+var sell_spell: Callable
 
 # base rngs stats
 var upper_bound = 10
@@ -23,12 +24,13 @@ var industry_id: int
 
 var history: Array[HistoricAktie]
 
-func _init(_id: int, _name: String, _industry: int, _description: String, _logo : String) -> void:
+func _init(_id: int, _name: String, _industry: int, _description: String, _logo : String, spell: Callable) -> void:
 	id = _id
 	name = _name
 	industry_id = _industry
 	description = _description
 	logo = _logo
+	sell_spell = spell
 	
 func print_me() -> void:
 	print("id: %s name: %s amount: %s value: %s market_cap: %s" % [id, name, amount, value, market_cap()])
@@ -92,3 +94,6 @@ func reset_manipulation() -> void:
 	only_up = false
 	only_down = false
 	boost = 0
+
+func sell() -> void:
+	sell_spell.call(self)
