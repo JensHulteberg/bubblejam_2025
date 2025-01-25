@@ -14,10 +14,6 @@ func _ready():
 	#Market.market_update.connect(pull_card)
 
 
-func _input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
-		pull_card()
-
 func _on_add_card_to_deck(card):
 	deck.add_card_to_bottom(card)
 	deck.shuffle()
