@@ -46,6 +46,7 @@ func generate_stock_list():
 		stock_vis.show_description.connect(_on_stock_show_description)
 		
 		stock_list.add_child(stock_vis)
+	_on_stock_show_description(Market.aktier[0])
 
 func set_comp_desc(stock):
 	desc_box.set_title(stock.name)
@@ -68,6 +69,10 @@ func _on_money_updated(old_val, new_val):
 func _on_market_update():
 	graph.redraw_graph()
 	timer.value -= 1
+	if timer.value < 10:
+		timer.tint_progress = Color.RED
+	elif timer.value < 30:
+		timer.tint_progress = Color.YELLOW
 
 func set_money(value):
 	money_label.text = "$ " + str(int(value))

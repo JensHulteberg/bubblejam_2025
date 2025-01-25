@@ -12,14 +12,38 @@ var industrys: Array[Industri] = [
 ]
 
 var aktier: Array[Aktie] = [
-	Aktie.new(1, "Arnold & Wester", 1, "res://graphics/aw_logo.png"),
-	Aktie.new(2, "Baas", 1, "res://graphics/baas_logo.png"),
-	Aktie.new(3, "Alashnitev", 1, "res://graphics/alashnitev_logo.png"),
-	Aktie.new(4, "Kine", 2, "res://graphics/kine_logo.png"),
-	Aktie.new(5, "Feel Good Inc.", 2, "res://graphics/feel_good_logo.png"),
-	Aktie.new(7, "Tenton", 3, "res://graphics/tenton_logo.png"),
-	Aktie.new(8, "S.U.N.", 3, "res://graphics/sun_logo.png"),
-	Aktie.new(9, "Vattenmakt", 3, "res://graphics/vattenkraft_logo.png"),
+	Aktie.new(1, "Arnold & Wester", 1, 
+	"Weapons manufacturer based in United Western Nations", 
+	"res://graphics/aw_logo.png",
+	func(): pass),
+	Aktie.new(2, "Baas", 1, 
+	"Hold over company from the old era, known for reliable large munitons", 
+	"res://graphics/baas_logo.png",
+	func(): pass),
+	Aktie.new(3, "Alashnitev", 1, 
+	"Trusty small arms manufactuarer dealing with both offical and rogue nations", 
+	"res://graphics/alashnitev_logo.png",
+	func(): pass),
+	Aktie.new(4, "Kine", 2, 
+	"Fitness focused feetware", 
+	"res://graphics/kine_logo.png",
+	func(): pass),
+	Aktie.new(5, "Feel Good Inc.", 2,
+	"Leading producer of ingestion based body enhancing supplements", 
+	"res://graphics/feel_good_logo.png",
+	func(): pass),
+	Aktie.new(7, "Tentron", 3, 
+	"UWN based energy company with a solid track record and industry topping pension plan", 
+	"res://graphics/tenton_logo.png",
+	func(): pass),
+	Aktie.new(8, "S.U.N.", 3,
+	"The power of the sun, in the palm of your stock portfolio", 
+	"res://graphics/sun_logo.png",
+	func(): pass),
+	Aktie.new(9, "Vattenmakt", 3,
+	"Hydro- and Aerodams producing public and private enengy in the Eurafrican zone", 
+	"res://graphics/vattenkraft_logo.png",
+	func(): pass),
 ]
 
 var rng = RandomNumberGenerator.new()
@@ -57,7 +81,8 @@ func buy_stock(stock_id: int) -> void:
 	pass
 	
 func sell_stock(stock_id: int) -> void:
-	pass
+	for a in aktier:
+		a.sell()
 
 func update() -> void:
 	for a in aktier: 
