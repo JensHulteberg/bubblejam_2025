@@ -31,6 +31,10 @@ func _ready() -> void:
 	PlayerState.explode_particles.connect(_emit_sell_particles)
 	_on_money_updated(0, PlayerState.money)
 
+
+func set_terminal_fee(fee):
+	$VBoxContainer/header/HBoxContainer2/fee_info.text = "Next license fee: " + str(fee) + " ₭"
+
 func set_date(date):
 	date_label.text = date
 

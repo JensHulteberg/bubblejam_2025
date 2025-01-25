@@ -116,11 +116,21 @@ theme_override_constants/separation = 32
 [node name="header" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/header"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/header"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/header/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a7t1")
 theme_override_font_sizes/font_size = 32
 text = "GLOOMBERG TERMINAL V4.3"
+
+[node name="fee_info" type="Label" parent="VBoxContainer/header/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Next license fee: "
+horizontal_alignment = 2
 
 [node name="white_line" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
 layout_mode = 2
