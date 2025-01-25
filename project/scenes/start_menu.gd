@@ -3,6 +3,7 @@ extends Control
 signal start_game
 
 func _on_enter_button_down() -> void:
+	MusicPlayer.play_song("theme")
 	emit_signal("start_game")
 
 

@@ -14,7 +14,7 @@ func _on_anim_finished(anim_name):
 		#$CenterContainer/RichTextLabel.text = "YOU BLOW YOUR BRAINS OUT..."
 	if loop_count > max_loops:
 		visible = false
-		
+		SfxPlayer.play_sfx("oh_no")
 		return
 	if loop_count > max_loops - 1:
 		$Timer.start()

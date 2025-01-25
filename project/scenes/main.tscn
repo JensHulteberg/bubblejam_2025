@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xn5i8"]
 [ext_resource type="Texture2D" uid="uid://da7qnhccbgo21" path="res://graphics/kip_symbol.png" id="2_nwkjt"]
 [ext_resource type="PackedScene" uid="uid://bu7k3wmq5b07l" path="res://scenes/card_manager.tscn" id="3_pgutm"]
-[ext_resource type="PackedScene" path="res://scenes/start_menu.tscn" id="4_ib31n"]
-[ext_resource type="PackedScene" path="res://scenes/opening_crawl.tscn" id="4_vxa67"]
+[ext_resource type="PackedScene" uid="uid://cupy53ryqh1xv" path="res://scenes/start_menu.tscn" id="4_ib31n"]
+[ext_resource type="PackedScene" uid="uid://dshrwi5p8qtm" path="res://scenes/opening_crawl.tscn" id="4_vxa67"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="5_80qjn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8qlp2"]

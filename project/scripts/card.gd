@@ -67,7 +67,7 @@ func _on_button_button_down() -> void:
 	dragging = true
 
 func sell():
-	SfxPlayer.play("synth_jingle")
+	SfxPlayer.play_sfx("positronic")
 	PlayerState.emit_signal("explode_particles")
 	Market.sell_stock(stock_id)
 	emit_signal("card_sold")

@@ -75,7 +75,7 @@ func _on_market_update():
 	graph.redraw_graph()
 	timer.value -= 1
 	if timer.value < 5:
-		SfxPlayer.play("negative")
+		SfxPlayer.play_sfx("negative")
 		timer.tint_progress = Color.RED
 	elif timer.value < 10:
 		timer.tint_progress = Color.YELLOW
@@ -88,7 +88,7 @@ func clear_news():
 		child.free()
 
 func _on_news_published(article):
-	
+	SfxPlayer.play_sfx("synth_jingle")
 	var news_list_item = news_item_res.instantiate()
 	news_list_item.set_news(article.title, article.description)
 	news_list.add_child(news_list_item)
