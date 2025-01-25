@@ -10,12 +10,13 @@ var day_end = preload("res://scenes/day_roundup.tscn")
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
 
-var day_length: int = 20
+var day_length: int = 90
 var tick: int = 0
 
 func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
 	PlayerState.explode_particles.connect(_explode_particles)
+	begin_day()
 
 
 func begin_day() -> void:
@@ -23,7 +24,7 @@ func begin_day() -> void:
 	PlayerState.save_day_begin(day_index)
 	var day = day_begin.instantiate()
 	$CanvasLayer.add_child(day)
-	await day.fade_in("MARKET OPENING DAY %s" % day_index)
+	await day.fade_in("MARKET OPENING DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	await day.fade_out()
 
@@ -65,7 +66,11 @@ func _on_day_over(anim_name):
 	await day.fade_in()
 	await day.fade_out()
 	
-	begin_day()
+	if day_end_stats.money - day_end_stats.terminal_fee:
+		print("YOU ARE DEAD")
+	else:
+		begin_day()
+
 
 func _explode_particles():
 	$background_particles/GPUParticles2D.emitting = true

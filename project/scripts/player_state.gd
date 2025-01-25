@@ -29,7 +29,7 @@ func _ready() -> void:
 	#]
 	deck = []
 
-	money = 1000
+	money = 320
 	Market.market_update.connect(_on_market_update)
 
 func calc_deck_value() -> int:
@@ -42,7 +42,10 @@ func save_day_begin(id: int) -> void:
 	day_begin_stats.append({"day": id,  "money": money, "stocks": calc_deck_value()})
 
 func save_day_end(id: int) -> void:
-	day_end_stats.append({"day": id,  "money": money, "stocks": calc_deck_value()})
+	day_end_stats.append({"day": id,  "money": money, "stocks": calc_deck_value(), "terminal_fee": license_fee(id)})
+
+func license_fee(id: int) -> int:
+	return id * 100
 
 func get_day_end(id: int) -> Dictionary:
 	for stats in day_end_stats:
