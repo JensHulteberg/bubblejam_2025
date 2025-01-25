@@ -21,6 +21,8 @@ var money = 0 :
 var day_begin_stats = []
 var day_end_stats = []
 
+var hike_terminal_price: bool = false
+
 func _ready() -> void:
 	#deck = [
 	#{"stock": Market.get_aktie_by_id(1), "amount": 4},
@@ -45,7 +47,10 @@ func save_day_end(id: int) -> void:
 	day_end_stats.append({"day": id,  "money": money, "stocks": calc_deck_value(), "terminal_fee": license_fee(id)})
 
 func license_fee(id: int) -> int:
-	return id * 100
+	var fee = id * 100
+	if hike_terminal_price:
+		fee *= 10
+	return fee
 
 func get_day_end(id: int) -> Dictionary:
 	for stats in day_end_stats:

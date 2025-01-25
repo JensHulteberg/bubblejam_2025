@@ -1,11 +1,13 @@
 extends Node
 
 var days = ["Day_1"]
-var day_index = 0
+var day_index = 7
 
 var bt = preload("res://scenes/bloomberg_terminal.tscn")
 var day_begin = preload("res://scenes/day_presentation.tscn")
 var day_end = preload("res://scenes/day_roundup.tscn")
+var death_screen = preload("res://scenes/death_screen.tscn")
+var lose_screen = preload("res://scenes/lost_screen.tscn")
 
 var bloomberg_terminal: MarginContainer 
 @onready var card_manager: Control = $CanvasLayer/CardManager
@@ -77,11 +79,20 @@ func _on_day_over(anim_name):
 	if day_end_stats.money - day_end_stats.terminal_fee < 0:
 		await day.fail_to_pay()
 		await day.fade_out()
+		lose_game()
+			
 	else:
 		PlayerState.money -= day_end_stats.terminal_fee
 		await day.fade_out()
 		begin_day()
 
+func lose_game() -> void:
+	if day_index > 8:
+		var screen = death_screen.instantiate()
+		$CanvasLayer.add_child(screen)
+	else:
+		var screen = lose_screen.instantiate()
+		$CanvasLayer.add_child(screen)
 
 func _explode_particles():
 	$background_particles/GPUParticles2D.emitting = true

@@ -24,6 +24,7 @@ func set_value(value):
 
 func _on_mouse_entered() -> void:
 	emit_signal("show_description", stock)
+	SfxPlayer.play_sfx("woosh", 0.5 + stock.id * 0.1, -5.0 - stock.id * 0.1)
 	$VBoxContainer/HBoxContainer/title["theme_override_colors/font_color"] = Color(Color.BLACK)
 	$VBoxContainer/HBoxContainer/value["theme_override_colors/default_color"] = Color(Color.BLACK)
 	

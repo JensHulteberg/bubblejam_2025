@@ -21,9 +21,7 @@ func add_card_to_market(stock: Aktie):
 	
 	stack.move_child(card_buy_vis, 0)
 	
-	print(stack.get_children().size())
 	if stack.get_children().size() > market_max_value:
-		print(stack.get_children()[-1].card_on_sale.card_title)
 		stack.get_children()[-1].free()
 	
 

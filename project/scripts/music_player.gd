@@ -10,11 +10,16 @@ func _ready() -> void:
 	#play_song("intro")
 
 func play_song(name: String):
-	if playing:
-		var tween = create_tween()
-		tween.tween_property(self, "volume_db", -100, 1)
-		await tween.finished
-		stop()
+	await fade_out()
 	volume_db = 0
 	stream = songs[name]
 	play()
+
+
+func fade_out(duration: float = 1.0):
+	if playing:
+		var tween = create_tween()
+		tween.tween_property(self, "volume_db", -100, duration)
+		await tween.finished
+		stop()
+	

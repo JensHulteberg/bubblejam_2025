@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://do3wp3t6vltxl"]
+[gd_scene load_steps=10 format=3 uid="uid://bns7u2o6onlto"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_m5s6b"]
+[ext_resource type="Theme" uid="uid://b1cikqqf2v0a3" path="res://graphics/master_theme.tres" id="1_m5s6b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_5ifkb"]
 [ext_resource type="Script" path="res://scenes/day_presentation.gd" id="2_jbijo"]
-[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="4_60167"]
+[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="4_60167"]
 [ext_resource type="FontFile" uid="uid://c10d5lvaqvgfr" path="res://fonts/Mx437_DOS-V_re_JPN19.ttf" id="4_bjsfi"]
 
 [sub_resource type="Animation" id="Animation_8ppq6"]
