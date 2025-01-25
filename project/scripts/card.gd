@@ -20,6 +20,15 @@ var anchor_y:
 	set(value):
 		anchor_top = value
 		anchor_bottom = value
+var offset:
+	get:
+		return offset_left
+	set(value):
+		offset_left = value
+		offset_right = value
+		offset_top = value
+		offset_bottom = value
+		
 
 func _ready():
 	_sync()

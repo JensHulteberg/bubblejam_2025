@@ -1,4 +1,4 @@
-extends Control
+class_name Deck extends Control
 
 const BACKSIDE_CARD = preload("res://scenes/card_backside.tscn")
 
@@ -15,14 +15,22 @@ func _ready():
 func add_card_to_bottom(card: Card):
 	card.visible = false
 	cards.append(card)
+	add_child(card)
 	
 	var backside_card = BACKSIDE_CARD.instantiate()
 	_add_backside_card.call_deferred(backside_card)
 
 
 func pull_card() -> Card:
+	if cards.size() == 0:
+		return
+	
 	_remove_backside_card()
-	return cards.pop_front()
+	var card = cards.pop_front()
+	card.anchor_x = 0.5
+	card.anchor_y = 0.5
+	card.visible = true
+	return card
 
 
 func shuffle():

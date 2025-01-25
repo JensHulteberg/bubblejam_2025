@@ -1,8 +1,8 @@
-extends Control
+class_name CardHand extends Control
 
 const MAX_NUM_CARDS: int = 7
 const MAX_ROT: float = 5.0
-const MAX_X_OFFSET: float = 0.5
+const MAX_X_OFFSET: float = 0.4
 const MAX_Y_OFFSET: float = 0.05
 
 var cards: Array[Card]
@@ -11,34 +11,43 @@ var cards: Array[Card]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var example_card = preload("res://scenes/card.tscn")
-	add_card(example_card.instantiate())
-	add_card(example_card.instantiate())
-	add_card(example_card.instantiate())
-	add_card(example_card.instantiate())
+	add_card(example_card.instantiate(), true)
+	add_card(example_card.instantiate(), true)
+	add_card(example_card.instantiate(), true)
+	add_card(example_card.instantiate(), true)
 	
 	visualize()
 
 
-func add_card(card: Card):
+func add_card(card: Card, initial: bool = false):
 	if cards.size() == MAX_NUM_CARDS:
 		return false
 	
-	card.rotation_degrees = 0
-	card.anchor_left = 0.5
-	card.anchor_right = 0.5
-	card.anchor_top = 0.5
-	card.anchor_bottom = 0.5
-	
 	cards.append(card)
-	add_child(card)
+	if card.get_parent() == null:
+		add_child(card)
+	else:
+		card.reparent(self)
+	
+	if initial:
+		card.rotation_degrees = 0
+		card.anchor_x = 0.5
+		card.anchor_y = 0.5
 	
 	return true
 
 
+func at_limit():
+	return cards.size() == MAX_NUM_CARDS
+
+
 func visualize():
+	var signals = []
 	for index in range(cards.size()):
 		var card = cards[index]
-		_visualize_card(index, card)
+		var finished_signal = _visualize_card(index, card)
+		signals.append(finished_signal)
+	await Util.await_signals(signals)
 
 
 func _visualize_card(index: int, card: Card):
@@ -56,3 +65,5 @@ func _visualize_card(index: int, card: Card):
 	tween.tween_property(card, "rotation_degrees", rot, duration)
 	tween.tween_property(card, "anchor_x", x, duration)
 	tween.tween_property(card, "anchor_y", y, duration)
+	
+	return tween.finished

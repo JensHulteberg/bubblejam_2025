@@ -14,6 +14,9 @@ var money_tween
 @onready var timer = $VBoxContainer/header/HBoxContainer/TextureProgressBar
 
 
+@onready var deck: Deck = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/Deck
+@onready var card_hand: CardHand = $VBoxContainer/main_layout/VBoxContainer/MarginContainer/HBoxContainer/CardHand
+
 func _ready() -> void:
 	clear_news()
 	generate_stock_list()
