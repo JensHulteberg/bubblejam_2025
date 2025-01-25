@@ -1,5 +1,5 @@
 @tool
-extends Control
+class_name Card extends Control
 
 @export var card_title: String = "CARD"
 @export var image: Texture2D = preload("res://graphics/placeholder_card_image.png")
@@ -12,7 +12,7 @@ extends Control
 func _ready():
 	_sync()
 	pivot_offset.x = custom_minimum_size.x / 2
-	pivot_offset.y = custom_minimum_size.y / 2
+	pivot_offset.y = custom_minimum_size.y
 
 func _process(delta: float):
 	if Engine.is_editor_hint():

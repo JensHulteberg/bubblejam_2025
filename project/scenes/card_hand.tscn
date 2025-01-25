@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdq78udxiavn3"]
+
+[ext_resource type="Script" path="res://scripts/card_hand.gd" id="1_0d3af"]
+
+[node name="CardHand" type="Control"]
+layout_mode = 3
+anchor_left = 0.05
+anchor_top = 0.6
+anchor_right = 0.951
+anchor_bottom = 1.0
+offset_left = 0.399998
+offset_top = 0.264008
+offset_right = -0.552002
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0d3af")
