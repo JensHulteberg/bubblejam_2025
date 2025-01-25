@@ -7,7 +7,7 @@ var value: int
 var industry_id: int
 var history: Array[HistoricAktie]
 
-func _init(_id: int, _name: , _industry: int) -> void:
+func _init(_id: int, _name: String, _industry: int) -> void:
 	id = _id
 	name = _name
 	industry_id = _industry
@@ -24,9 +24,13 @@ func market_cap() -> int:
 	
 func push_value(_value: int) -> void:
 	history.append(HistoricAktie.new(value, amount))
-	value = _value
-	print( "%s : %s " % [value, _value])
+	value = max(_value, 0)
 	
 func step_value() -> void:
-	push_value(value + 1)
+	push_value(value + Market.rng.randi_range(-10, 10))
+	
+func min_max_values () -> Vector2:
+	var values = history.map(func(h): return h.value)
+	values.append(value)
+	return Vector2(values.min(), values.max())
 	

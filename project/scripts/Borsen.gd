@@ -25,7 +25,6 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.seed = 12345
 	init_stocks()
-	print_stocks()
 	
 func print_stocks() -> void:
 	for a in aktier:
