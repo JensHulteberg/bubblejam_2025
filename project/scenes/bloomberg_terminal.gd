@@ -10,6 +10,7 @@ var money_tween
 @onready var news_list = $VBoxContainer/main_layout/news/news/ScrollContainer/VBoxContainer
 @onready var news_scroll_cont = $VBoxContainer/main_layout/news/news/ScrollContainer
 @onready var money_label = $VBoxContainer/header/HBoxContainer/money
+@onready var graph = $VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer/graph_box/stonk_graph/CenterContainer/StockGraph
 
 func _ready() -> void:
 	clear_news()
@@ -39,6 +40,8 @@ func set_comp_desc(stock):
 
 func _on_stock_show_description(stock):
 	set_comp_desc(stock)
+	graph.set_stock(stock)
+	
 
 func _on_money_updated(old_val, new_val):
 	if money_tween:
