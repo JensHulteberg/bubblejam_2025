@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ka8m58q4bsy6"]
+[gd_scene load_steps=6 format=3 uid="uid://c3gyhwbgwvstj"]
 
-[ext_resource type="Theme" uid="uid://qqmlxtvicreu" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://b1cikqqf2v0a3" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
-[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
-[ext_resource type="PackedScene" uid="uid://3jm5o8wkiebn" path="res://scenes/stock.tscn" id="2_xtl88"]
-[ext_resource type="PackedScene" uid="uid://bv3if0sftqybh" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
+[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="2_jx0n4"]
+[ext_resource type="PackedScene" path="res://scenes/stock.tscn" id="2_xtl88"]
+[ext_resource type="PackedScene" path="res://scenes/news_flash.tscn" id="3_kvf7m"]
 
 [node name="BloombergTerminal" type="MarginContainer"]
 anchors_preset = 15
@@ -29,7 +29,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a7t1")
 theme_override_font_sizes/font_size = 32
-text = "BLOOMBERG"
+text = "GLOOMBERG"
 
 [node name="white_line" parent="VBoxContainer/header" instance=ExtResource("2_jx0n4")]
 layout_mode = 2

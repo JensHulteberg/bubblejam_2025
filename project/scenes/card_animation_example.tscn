@@ -83,7 +83,7 @@ offset_bottom = 260.0
 grow_horizontal = 1
 grow_vertical = 1
 rotation = -0.261799
-pivot_offset = Vector2(37.5, 70)
+pivot_offset = Vector2(37.5, 105)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

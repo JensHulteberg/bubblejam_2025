@@ -2,7 +2,7 @@ extends Control
 
 const MAX_NUM_CARDS: int = 7
 const MAX_ROT: float = 5.0
-const MAX_X_OFFSET: float = 0.2
+const MAX_X_OFFSET: float = 0.5
 const MAX_Y_OFFSET: float = 0.05
 
 var cards: Array[Card]
@@ -15,6 +15,8 @@ func _ready() -> void:
 	add_card(example_card.instantiate())
 	add_card(example_card.instantiate())
 	add_card(example_card.instantiate())
+	
+	visualize()
 
 
 func add_card(card: Card):
@@ -29,7 +31,6 @@ func add_card(card: Card):
 	
 	cards.append(card)
 	add_child(card)
-	visualize()
 	
 	return true
 
@@ -53,7 +54,5 @@ func _visualize_card(index: int, card: Card):
 	var duration = 0.2
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property(card, "rotation_degrees", rot, duration)
-	tween.tween_property(card, "anchor_left", x, duration)
-	tween.tween_property(card, "anchor_right", x, duration)
-	tween.tween_property(card, "anchor_top", y, duration)
-	tween.tween_property(card, "anchor_bottom", y, duration)
+	tween.tween_property(card, "anchor_x", x, duration)
+	tween.tween_property(card, "anchor_y", y, duration)

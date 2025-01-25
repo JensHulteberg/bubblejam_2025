@@ -8,6 +8,18 @@ class_name Card extends Control
 @onready var card_title_label: RichTextLabel = $MarginContainer/VBoxContainer/MarginContainer/CardTitleLabel
 @onready var image_texture_rect: TextureRect = $MarginContainer/VBoxContainer/MarginContainer2/ImageTextureRect
 
+var anchor_x:
+	get:
+		return anchor_left
+	set(value):
+		anchor_left = value
+		anchor_right = value
+var anchor_y:
+	get:
+		return anchor_top
+	set(value):
+		anchor_top = value
+		anchor_bottom = value
 
 func _ready():
 	_sync()
