@@ -1,6 +1,9 @@
 extends Button
 
-var stock: Aktie
+var stock: Aktie:
+	set(new_stock):
+		stock = new_stock
+		stock.aktie_update.connect(_on_aktie_update)
 signal show_description
 
 func set_title(name):
@@ -30,3 +33,7 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	$VBoxContainer/HBoxContainer/title["theme_override_colors/font_color"] = Color(Color.WHITE)
 	$VBoxContainer/HBoxContainer/value["theme_override_colors/default_color"] = Color(Color.WHITE)
+
+func _on_aktie_update():
+	set_title(stock.name)
+	set_value(stock.value)

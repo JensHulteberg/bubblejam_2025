@@ -8,6 +8,9 @@ func set_stock(_aktie: Aktie) -> void:
 	aktie = _aktie
 	queue_redraw()
 
+func redraw_graph():
+	queue_redraw()
+
 func _draw() -> void:
 	#draw_border()
 	if (aktie == null):

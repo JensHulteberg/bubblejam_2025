@@ -18,6 +18,7 @@ func _ready() -> void:
 	PlayerState.money += 1000
 	
 	PlayerState.money_updated.connect(_on_money_updated)
+	Market.market_update.connect(_on_market_update)
 
 func generate_stock_list():
 	for child in stock_list.get_children():
@@ -50,6 +51,9 @@ func _on_money_updated(old_val, new_val):
 	
 	money_tween = create_tween()
 	money_tween.tween_method(set_money, old_val, new_val, abs(old_val - new_val) / 100)
+
+func _on_market_update():
+	graph.redraw_graph()
 
 func set_money(value):
 	money_label.text = "$ " + str(int(value))
