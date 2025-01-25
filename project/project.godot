@@ -22,6 +22,10 @@ window/size/viewport_height=720
 window/size/mode=2
 window/stretch/mode="viewport"
 
+[autoload]
+
+Market="*res://scripts/Borsen.gd"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
