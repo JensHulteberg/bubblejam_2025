@@ -2,6 +2,8 @@ extends Node
 
 var days = ["Day_1"]
 var day_index = 0
+var bubble_day_index = 3
+var burst_day_index = 8
 
 var bt = preload("res://scenes/bloomberg_terminal.tscn")
 var day_begin = preload("res://scenes/day_presentation.tscn")
@@ -34,9 +36,9 @@ func begin_day() -> void:
 	await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	
-	if day_index > 3:
+	if day_index > bubble_day_index:
 		Redaktionen.bubble_on = true
-	if day_index > 7:
+	if day_index > burst_day_index:
 		Redaktionen.burst_on = true
 		
 	await day.fade_out()
@@ -79,16 +81,17 @@ func _on_day_over(anim_name):
 	
 	if day_end_stats.money - day_end_stats.terminal_fee < 0:
 		await day.fail_to_pay()
-		await day.fade_out()
+		day.queue_free()
 		lose_game()
 			
 	else:
+		await day.clear_payment()
 		PlayerState.money -= day_end_stats.terminal_fee
 		await day.fade_out()
 		begin_day()
 
 func lose_game() -> void:
-	if day_index > 8:
+	if day_index > burst_day_index + 1:
 		var screen = death_screen.instantiate()
 		$CanvasLayer.add_child(screen)
 	else:

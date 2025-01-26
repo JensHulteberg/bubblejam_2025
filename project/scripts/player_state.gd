@@ -24,6 +24,7 @@ var day_begin_stats = []
 var day_end_stats = []
 
 var hike_terminal_price: bool = false
+var terminal_fee_boost: int = 0
 
 func _ready() -> void:
 	#deck = [
@@ -36,8 +37,9 @@ func _ready() -> void:
 	money = 320
 	Market.market_update.connect(_on_market_update)
 	
-func hike_terminal_fee() -> void:
+func hike_terminal_fee(boost: int) -> void:
 	hike_terminal_price = true
+	terminal_fee_boost = boost
 	emit_signal("terminal_price_change")
 
 func calc_deck_value() -> int:
@@ -56,7 +58,8 @@ func license_fee(id: int) -> int:
 	var fee = id * 100
 	if hike_terminal_price:
 		fee *= 10
-	return fee
+		fee += terminal_fee_boost
+	return fee 
 
 func get_day_end(id: int) -> Dictionary:
 	for stats in day_end_stats:
