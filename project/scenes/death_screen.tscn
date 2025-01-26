@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1sn0ocpiv1fw"]
+[gd_scene load_steps=9 format=3 uid="uid://d1sn0ocpiv1fw"]
 
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="1_bnmxs"]
 [ext_resource type="Script" path="res://scenes/death_screen.gd" id="1_ydhd2"]
+[ext_resource type="Texture2D" uid="uid://dmmqguvvyant7" path="res://graphics/borsen_logo.png" id="3_pmbvn"]
 
 [sub_resource type="Animation" id="Animation_3w1cd"]
 length = 0.001
@@ -28,6 +29,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hynkd"]
@@ -86,11 +123,67 @@ tracks/1/keys = {
 "values": [Color(0.2, 0.2, 0.2, 1), Color(0.4, 0.4, 0.4, 1), Color(0.6, 0.6, 0.6, 1), Color(0.8, 0.8, 0.8, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.8, 0.8, 0.8, 1), Color(0.6, 0.6, 0.6, 1), Color(0.4, 0.4, 0.4, 1), Color(0.2, 0.2, 0.2, 1), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ouxhj"]
+resource_name = "fade_in_logo"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0999999),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_end_music"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l68xc"]
 _data = {
 "RESET": SubResource("Animation_3w1cd"),
 "death_anim": SubResource("Animation_hynkd"),
-"death_anim_2": SubResource("Animation_x2ebw")
+"death_anim_2": SubResource("Animation_x2ebw"),
+"fade_in_logo": SubResource("Animation_ouxhj")
 }
 
 [node name="DeathScreen" type="Control"]
@@ -127,12 +220,22 @@ text = "YOU BLEW YOUR ONE CHANCE..."
 fit_content = true
 autowrap_mode = 0
 
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_pmbvn")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_l68xc")
 }
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="logo_wait_timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
