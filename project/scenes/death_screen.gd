@@ -5,7 +5,7 @@ var loop_count = 0
 
 func _ready() -> void:
 	$AnimationPlayer.animation_finished.connect(_on_anim_finished)
-	$AnimationPlayer.play("death_anim")
+	$AnimationPlayer.play("death_anim_2")
 	MusicPlayer.stop()
 	
 
@@ -19,7 +19,7 @@ func _on_anim_finished(anim_name):
 		return
 	if loop_count > max_loops - 1:
 		$Timer.start()
-	$AnimationPlayer.play("death_anim")
+	$AnimationPlayer.play("death_anim_2")
 
 
 func _on_timer_timeout() -> void:
