@@ -47,7 +47,15 @@ func market_cap() -> int:
 func push_value(_value: int) -> void:
 	history.append(HistoricAktie.new(value, amount))
 	value = max(_value, min_value)
+	early_game_boost_crashing_stocks()
 	emit_signal("aktie_update")
+	
+func early_game_boost_crashing_stocks() -> void:
+	if value == min_value && reset_ticks == 0 && min_value > 0:
+		manipulate(10, false, false, 4)
+		lower_bound = -1
+		if upper_bound < 5:
+			upper_bound = 5
 	
 func step_value() -> void:
 	var lower = lower_bound

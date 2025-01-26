@@ -23,7 +23,7 @@ func _ready() -> void:
 	PlayerState.explode_particles.connect(_explode_particles)
 	start_menu.start_game.connect(start_game)
 	
-	#day_index = 8
+	#day_index = 0
 	#PlayerState.money = 100000
 	#Market.timer.wait_time = 0.1
 	
