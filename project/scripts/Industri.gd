@@ -33,7 +33,7 @@ func get_industry_manipulation(pre: int) -> int:
 	
 	if bubble:
 		post = abs(pre)
-		post *= 2
+		post *= 4
 	
 	reset_ticks -= 1
 	if reset_ticks <= 0:

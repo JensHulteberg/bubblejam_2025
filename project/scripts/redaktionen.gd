@@ -46,16 +46,26 @@ var bubble_news: Array[News] = [
 	func(): pass, func(): Market.manipulate_stock(5, 20, false, false, 6)),
 	News.new(7, "Arming up", "Increased demands for large, small, and physo-arms. Large arms in high demand.",
 	func(): Market.manipulate_industry(1, 30, true, 0), func(): Market.manipulate_stock(2, 20, false, false, 8)),
-	News.new(8, "Feeling the flow", "EAU gives the clear to use max capacaty for all dams to satisfy increased demands",
+	News.new(8, "Feeling the flow", "EAZ gives the clear to use max capacaty for all dams to satisfy increased demands",
 	func(): pass, func(): Market.manipulate_stock(2, 60, false, false, 8)),
 	News.new(9, "Electric records", "Energy sector is recording record profits ",
 	func(): Market.manipulate_industry(3, 30, false, 8), func(): pass),
 	News.new(10, "Fashon trends", "Fashon trends has shifted to military inspired fitness gear, the health industry is booming",
-	func(): Market.manipulate_industry(2, 30, true, 0), func(): pass),
+	func(): Market.manipulate_industry(2, 30, true, 2), func(): pass),
 	News.new(11, "News on western coast", "UWNA reports pushing back the rouge nations with great success. Predicts a long military effort to keep the peace.",
-	func(): Market.manipulate_industry(1, 30, true, 0), func(): pass),
+	func(): Market.manipulate_industry(1, 30, true, 2), func(): pass),
 	News.new(12, "Joint venture", "Tentron, Vattenmakt, and S.U.N. announces a joint venture in producing energy for the public sector.",
-	func(): Market.manipulate_industry(3, 30, true, 0), func(): pass),
+	func(): Market.manipulate_industry(3, 30, true, 2), func(): pass),
+	News.new(13, "BÖRSEN going strong", "All industries are reporting record profits",
+	func(): 
+		Market.manipulate_industry(1, 30, true, 5)
+		Market.manipulate_industry(2, 30, true, 5)
+		Market.manipulate_industry(3, 30, true, 5), 
+		func(): pass),
+	News.new(14, "Dream scape case solved", "Local police officer solved the harrowing case that took place earlier this year. He was promoted to detective for his efforts",
+	func(): pass, func(): pass),
+	News.new(15, "EAZ Finsum 2057 opens", "Oscar Wallberg opens the summit to thunderous applause reassuring the audience that the current market is not a bubble but a correction to previous levels",
+	func(): pass, func(): pass),
 ]
 
 var burst_news: Array[News] = [
@@ -72,7 +82,7 @@ var burst_news: Array[News] = [
 	func(): Market.manipulate_industry(2, 30, false, -8), 
 	func(): pass),
 	News.new(1, "Licensing update", "Gloomberg & Sons announces an updated licensing fee structure. According to G&S it should reflect the current market and its traders needs",
-	func(): PlayerState.hike_terminal_fee(), 
+	func(): PlayerState.hike_terminal_fee(0), 
 	func(): pass),
 	News.new(1, "None of a kind", "Kine unable to deliver thermo camo for the UWNA in time. Blames factories having to shut down because of lack of energy",
 	func(): Market.manipulate_industry(2, 10, false, -16), 
@@ -91,7 +101,7 @@ var burst_news: Array[News] = [
 	News.new(1, "FGIs new CSO", "Feel Good Inc. announces a new CSO with great experience from the health industry",
 	func(): Market.manipulate_industry(2, 30, false, -20), 
 	func(): pass),
-	News.new(1, "Help hands", "Citizens urged to help the war effort in any way they can. See Theo 7y is helping with his family",
+	News.new(1, "Helping hands", "Citizens urged to help the war effort in any way they can. See Theo 7y is helping with his family",
 	func():
 		Market.manipulate_industry(1, 30, false, -40)
 		Market.manipulate_industry(2, 30, false, -40)
@@ -135,16 +145,27 @@ func publish_bubble_news_item() -> void:
 	var news_item = bubble_news.pop_front()
 	if news_item != null:
 		publish_news_item(news_item)
+
 	
 func publish_burst_news_item() -> void:
 	var news_item = burst_news.pop_front()
 	if news_item != null:
 		publish_news_item(news_item)
+	else:
+		publish_news_item(
+			News.new(10 + PlayerState.day_index, "BÖRSEN CLOSING", "Gloomberg & Sons announcing new terminal fee",
+			func(): 	
+				PlayerState.hike_terminal_fee(PlayerState.license_fee(PlayerState.day_index) + PlayerState.day_index * 1000)
+				Market.manipulate_industry(1, 300, false, -100)
+				Market.manipulate_industry(2, 300, false, -100)
+				Market.manipulate_industry(3, 300, false, -100), 
+			func(): pass))
 	
 func publish_random_news_item() -> void:
 	var publish_me = news.filter(func(n): return published_news.find(n) < 0).pick_random()
 	if publish_me != null:
 		publish_news_item(publish_me)
+
 		
 func get_latest_news_item() -> News:
 	return news.front()
