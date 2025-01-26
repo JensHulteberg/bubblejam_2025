@@ -23,6 +23,10 @@ func _ready() -> void:
 	PlayerState.explode_particles.connect(_explode_particles)
 	start_menu.start_game.connect(start_game)
 	
+	#day_index = 8
+	#PlayerState.money = 100000
+	#Market.timer.wait_time = 0.1
+	
 func start_game() -> void:
 	$menu.queue_free()
 	begin_day()
@@ -40,6 +44,7 @@ func begin_day() -> void:
 		Redaktionen.bubble_on = true
 	if day_index > burst_day_index:
 		Redaktionen.burst_on = true
+		Market.aktier_can_be_zero()
 		
 	await day.fade_out()
 

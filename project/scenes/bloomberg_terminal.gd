@@ -25,7 +25,7 @@ func _ready() -> void:
 	generate_stock_list()
 	
 	PlayerState.money_updated.connect(_on_money_updated)
-	PlayerState.terminal_price_change.connect(set_terminal_fee)
+	PlayerState.terminal_price_hiked.connect(set_terminal_fee)
 	Market.market_update.connect(_on_market_update)
 	
 	Redaktionen.news_published.connect(_on_news_published)

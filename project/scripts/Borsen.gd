@@ -62,7 +62,7 @@ func _ready() -> void:
 	timer.connect("timeout", _on_timer_timeout)
 	timer.paused = true
 	timer.start()
-
+	
 func end_day() -> void:
 	timer.paused = true
 	stock_update_ticks = 0
@@ -134,3 +134,6 @@ func manipulate_stock(id: int, ticks: int, only_up: bool = false, only_down: boo
 		if a.id == id:
 			a.manipulate(ticks, only_up, only_down, boost)
 			
+func aktier_can_be_zero() -> void:
+	for a in aktier: 
+		a.min_value = 0

@@ -9,6 +9,7 @@ var amount: int
 var value: int
 var logo: String
 var sell_spell: Callable
+var min_value: int = 1
 
 # base rngs stats
 var upper_bound = 10
@@ -45,7 +46,7 @@ func market_cap() -> int:
 	
 func push_value(_value: int) -> void:
 	history.append(HistoricAktie.new(value, amount))
-	value = max(_value, 0)
+	value = max(_value, min_value)
 	emit_signal("aktie_update")
 	
 func step_value() -> void:

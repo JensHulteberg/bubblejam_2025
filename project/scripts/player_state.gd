@@ -5,7 +5,7 @@ signal draw_card
 signal add_card_to_market
 signal add_card_to_deck
 signal explode_particles
-signal terminal_price_change
+signal terminal_price_hiked
 
 var deck
 
@@ -37,7 +37,7 @@ func _ready() -> void:
 func hike_terminal_fee(boost: int) -> void:
 	hike_terminal_price = true
 	terminal_fee_boost = boost
-	emit_signal("terminal_price_change")
+	emit_signal("terminal_price_hiked")
 
 func calc_deck_value() -> int:
 	var sum = 0
