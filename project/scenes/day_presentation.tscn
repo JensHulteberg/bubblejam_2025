@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://do3wp3t6vltxl"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_m5s6b"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_m5s6b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_5ifkb"]
 [ext_resource type="Script" path="res://scenes/day_presentation.gd" id="2_jbijo"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="4_60167"]
@@ -35,10 +35,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/VBoxContainer/licence:visible_ratio")
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/licence:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/day_label:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -76,10 +88,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/VBoxContainer/licence:visible_ratio")
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/licence:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(2.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/VBoxContainer/HBoxContainer/day_label:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(2.5, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -144,15 +168,26 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5ifkb")
 theme_override_font_sizes/font_size = 60
-text = "MARKET OPENING DAY 1"
+text = "MARKET OPENING"
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="white_line" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_60167")]
 layout_mode = 2
 
-[node name="licence" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="day_label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Day 1"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="licence" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_bjsfi")
 theme_override_font_sizes/font_size = 20
