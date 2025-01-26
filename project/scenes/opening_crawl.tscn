@@ -113,7 +113,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "The global mindscape stock exchange collapsed in 2032.  The AI dream cores ravaged the many portfolios on the Frankfurt safe net. It was not so safe after all..."
+bbcode_enabled = true
+text = "The global mindscape stock exchange collapsed in 2032.  The AI dream cores ravaged the many portfolios on the [color=light-blue]FRANKFURT SAFE-NET[/color]. It was not so safe after all..."
 fit_content = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
@@ -121,7 +122,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "As the value of every stock globally fell to infinite negatives - chaos ensued. Many lost their finances. Some died… But from the ashes rose a new bastion of glorious investment oportunities: BÖRSEN. A new  better global trading network - free from the grasp of the AI dream cores."
+bbcode_enabled = true
+text = "As the value of every stock globally fell to infinite negatives - chaos ensued. Many lost their finances. Some died… But from the ashes rose a new bastion of glorious investment oportunities: [color=yellow]BÖRSEN[/color]. A new  better global trading network - free from the grasp of the AI dream cores."
 fit_content = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
@@ -129,7 +131,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "BÖRSEN was safer - through exclusivity. The market was invite only and the exuberant license fee for the GLOOMBERG TERMINAL INTERFACE ensured that only those who already had money where given the opportunity to make even more."
+bbcode_enabled = true
+text = "[color=yellow]BÖRSEN[/color] was safer - through exclusivity. The market was invite only and the exuberant license fee for the [color=red]GLOOMBERG TERMINAL INTERFACE[/color] ensured that only those who already had money where given the opportunity to make even more."
 fit_content = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
@@ -137,7 +140,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "But FUCK all that!"
+bbcode_enabled = true
+text = "But [color=purple]FUCK[/color] all that!"
 fit_content = true
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
@@ -145,7 +149,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
-text = "Through backwater channels on the mindscape you have gotten ahold of one of the illusive license keys to the GLOOMBERG TERMINAL INTERFACE. The plan is simple: trade stocks until you are filthy rich…"
+bbcode_enabled = true
+text = "Through backwater channels on the mindscape you have gotten ahold of one of the illusive license keys to the [color=red]GLOOMBERG TERMINAL INTERFACE[/color]. The plan is simple: trade stocks until you are filthy rich…"
 fit_content = true
 
 [node name="Control2" type="Control" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]

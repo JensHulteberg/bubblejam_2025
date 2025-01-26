@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3gyhwbgwvstj"]
+[gd_scene load_steps=23 format=3 uid="uid://bfpjsmukvoays"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
 [ext_resource type="Script" path="res://scenes/bloomberg_terminal.gd" id="2_nxhbo"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cyxpqxtjbuxo8" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
 [ext_resource type="PackedScene" uid="uid://b72kudcgdxyne" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
 [ext_resource type="PackedScene" uid="uid://bbhwblwx6eo8p" path="res://scenes/deck.tscn" id="8_0qqq5"]
-[ext_resource type="PackedScene" path="res://scenes/card_market.tscn" id="8_ppxus"]
+[ext_resource type="PackedScene" uid="uid://d1fpdd86g4mix" path="res://scenes/card_market.tscn" id="8_ppxus"]
 [ext_resource type="PackedScene" uid="uid://bdq78udxiavn3" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
 
 [sub_resource type="Gradient" id="Gradient_0nyuj"]

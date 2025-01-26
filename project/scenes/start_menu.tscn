@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cupy53ryqh1xv"]
+[gd_scene load_steps=7 format=3 uid="uid://cupy53ryqh1xv"]
 
 [ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_wnesh"]
 [ext_resource type="Script" path="res://scenes/start_menu.gd" id="2_5pqbs"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_r7ry5"]
 [ext_resource type="FontFile" uid="uid://cq3y0sjiv32pm" path="res://fonts/Mx437_DOS-V_re_JPN12.ttf" id="3_nqvhs"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="3_tgtg1"]
+[ext_resource type="Texture2D" uid="uid://dmmqguvvyant7" path="res://graphics/borsen_logo.png" id="5_dalor"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -70,7 +71,12 @@ theme_override_constants/separation = 32
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_dalor")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/CenterContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_r7ry5")
 theme_override_font_sizes/normal_font_size = 60
@@ -79,14 +85,18 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="white_line" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_tgtg1")]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 16
 
 [node name="enter" type="Button" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "ENTER THE MARKET"
 
 [node name="credits" type="Button" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -96,6 +106,7 @@ text = "CREDITS"
 
 [node name="exit" type="Button" parent="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "GIVE UP"
 
 [connection signal="button_down" from="MarginContainer/Panel/CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/enter" to="." method="_on_enter_button_down"]

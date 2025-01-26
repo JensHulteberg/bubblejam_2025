@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://vps5mtpio7kl"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_r3xox"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_r3xox"]
 [ext_resource type="Script" path="res://scenes/day_roundup.gd" id="2_4datp"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_sb62p"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="4_un7r2"]
@@ -55,6 +55,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/VBoxContainer/fee_payed_label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_e6cbt"]
 resource_name = "fade_in"
@@ -85,6 +97,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"trigger_text"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/fee_payed_label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_d2aw2"]
@@ -131,6 +155,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/fee_payed_label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_u3jvs"]
 resource_name = "payed_message"
@@ -159,6 +195,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/fee_payed_label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ea5i"]
@@ -198,7 +246,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -279,6 +327,7 @@ visible_characters_behavior = 1
 visible_ratio = 0.0
 
 [node name="fee_payed_label" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("4_un7r2")
