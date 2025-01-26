@@ -25,6 +25,7 @@ func _ready() -> void:
 	generate_stock_list()
 	
 	PlayerState.money_updated.connect(_on_money_updated)
+	PlayerState.terminal_price_change.connect(set_terminal_fee)
 	Market.market_update.connect(_on_market_update)
 	
 	Redaktionen.news_published.connect(_on_news_published)
@@ -32,8 +33,9 @@ func _ready() -> void:
 	_on_money_updated(0, PlayerState.money)
 
 
-func set_terminal_fee(fee):
-	$VBoxContainer/header/HBoxContainer2/fee_info.text = "Next license fee: ₭" + str(fee)
+func set_terminal_fee():
+	var fee = PlayerState.license_fee(PlayerState.day_index)
+	$VBoxContainer/header/HBoxContainer2/fee_info.text = "License fee: ₭ " + str(fee)
 
 func set_date(date):
 	date_label.text = date
