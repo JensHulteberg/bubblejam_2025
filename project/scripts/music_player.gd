@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 var songs = {
 	"theme": preload("res://sound/gloomberg.ogg"),
 	"intro": preload("res://sound/gloomberg_intro.ogg"),
+	"end": preload("res://sound/gloomberg_end.ogg"),
 }
 
 func _ready() -> void:
