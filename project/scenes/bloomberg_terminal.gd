@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func set_terminal_fee(fee):
-	$VBoxContainer/header/HBoxContainer2/fee_info.text = "Next license fee: " + str(fee) + " ₭"
+	$VBoxContainer/header/HBoxContainer2/fee_info.text = "Next license fee: ₭" + str(fee)
 
 func set_date(date):
 	date_label.text = date
