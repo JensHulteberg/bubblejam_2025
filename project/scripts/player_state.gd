@@ -20,6 +20,8 @@ var money = 0 :
 		emit_signal("money_updated", money, value)
 		money = value
 
+var starting_cash = 640
+
 var day_begin_stats = []
 var day_end_stats = []
 
@@ -27,14 +29,9 @@ var hike_terminal_price: bool = false
 var terminal_fee_boost: int = 0
 
 func _ready() -> void:
-	#deck = [
-	#{"stock": Market.get_aktie_by_id(1), "amount": 4},
-	#{"stock": Market.get_aktie_by_id(2), "amount": 3},
-	#{"stock": Market.get_aktie_by_id(3), "amount": 6}
-	#]
 	deck = []
 
-	money = 320
+	money = starting_cash
 	Market.market_update.connect(_on_market_update)
 	
 func hike_terminal_fee(boost: int) -> void:
