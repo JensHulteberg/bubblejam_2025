@@ -83,7 +83,7 @@ var burst_news: Array[News] = [
 	News.new(1, "Kine CEO steps down", "Interim CEO cites various coffee related reasons.",
 	func(): pass, 
 	func(): Market.manipulate_stock(1, 30, false, true, -8)),
-	News.new(1, "Lights of for the UWNA", "United Western Nations and Eurafrican Zone presents a new way to help the war effort. Just switch of your appliances duirng the day and night!",
+	News.new(1, "Lights off for the UWNA", "United Western Nations and Eurafrican Zone presents a new way to help the war effort. Just switch of your appliances during the day and night!",
 	func(): 
 		Market.manipulate_industry(1, 30, false, -20)
 		Market.manipulate_industry(3, 30, false, -13), 
@@ -97,7 +97,7 @@ var burst_news: Array[News] = [
 		Market.manipulate_industry(2, 30, false, -40)
 		Market.manipulate_industry(3, 30, false, -40), 
 	func(): pass),
-	News.new(1, "Focused efforts", "United Western Nations and Eurafrican Zone announces a take of BÖRSEN at the end of the year",
+	News.new(1, "BÖRSEN restructuring", "United Western Nations and Eurafrican Zone announces a takeover of BÖRSEN at the end of the year to strengthen the market",
 	func(): 		
 		Market.manipulate_industry(1, 300, false, -100)
 		Market.manipulate_industry(2, 300, false, -100)
