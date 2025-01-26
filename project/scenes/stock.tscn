@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ude603ll14s"]
+[gd_scene load_steps=4 format=3 uid="uid://3jm5o8wkiebn"]
 
-[ext_resource type="Theme" uid="uid://b1cikqqf2v0a3" path="res://graphics/master_theme.tres" id="1_fkcuw"]
-[ext_resource type="PackedScene" path="res://scenes/white_line.tscn" id="2_5ehrh"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_fkcuw"]
+[ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_5ehrh"]
 [ext_resource type="Script" path="res://scenes/stock.gd" id="2_y0fhs"]
 
 [node name="Stock" type="Button"]

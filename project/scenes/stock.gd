@@ -19,7 +19,7 @@ func set_value(value):
 	else:
 		trend_symbol = "[color=red]▼[/color]"
 	
-	$VBoxContainer/HBoxContainer/value.text = "₭ " + str(value) + " " + trend_symbol
+	$VBoxContainer/HBoxContainer/value.text = "$ " + str(value) + " " + trend_symbol
 
 
 func _on_mouse_entered() -> void:

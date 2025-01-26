@@ -37,7 +37,7 @@ func begin_day() -> void:
 	PlayerState.save_day_begin(day_index)
 	var day = day_begin.instantiate()
 	$CanvasLayer.add_child(day)
-	await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
+	await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: $ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	
 	if day_index > bubble_day_index:

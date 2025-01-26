@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func set_terminal_fee():
 	var fee = PlayerState.license_fee(PlayerState.day_index)
-	$VBoxContainer/header/HBoxContainer2/fee_info.text = "License fee: ₭ " + str(fee)
+	$VBoxContainer/header/HBoxContainer2/fee_info.text = "License fee: $ " + str(fee)
 
 func set_date(date):
 	date_label.text = date
@@ -90,7 +90,7 @@ func _on_market_update():
 		timer.tint_progress = Color.YELLOW
 
 func set_money(value):
-	money_label.text = "₭ " + str(int(value))
+	money_label.text = "$ " + str(int(value))
 
 func clear_news():
 	for child in news_list.get_children():
