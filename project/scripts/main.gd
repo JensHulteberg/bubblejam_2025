@@ -1,7 +1,7 @@
 extends Node
 
 var days = ["Day_1"]
-var day_index = 7
+var day_index = 0
 
 var bt = preload("res://scenes/bloomberg_terminal.tscn")
 var day_begin = preload("res://scenes/day_presentation.tscn")
@@ -20,7 +20,6 @@ func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
 	PlayerState.explode_particles.connect(_explode_particles)
 	start_menu.start_game.connect(start_game)
-	PlayerState.money = 10000
 	
 func start_game() -> void:
 	$menu.queue_free()
@@ -32,7 +31,7 @@ func begin_day() -> void:
 	PlayerState.save_day_begin(day_index)
 	var day = day_begin.instantiate()
 	$CanvasLayer.add_child(day)
-	await day.fade_in("MARKET OPENING DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
+	await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: ₭ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	
 	if day_index > 3:
