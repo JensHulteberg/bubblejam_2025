@@ -50,11 +50,14 @@ var bubble_news: Array[News] = [
 		Market.manipulate_stock(8, 22, false, true, 0)
 		),
 	News.new(5, "Energy demands", "Energy demands at an all time high, industry positively electric",
-	func(): Market.manipulate_industry(2, 60, false, 20), func(): pass),
+	func(): 
+		Market.manipulate_industry(2, 60, false, 20)
+		Market.manipulate_stock(2, 22, false, true, 0),
+	 func(): pass),
 	News.new(6, "Feeling focused", "Feel Good Inc. focuses efforts on soldier-enhancing drugs.",
 	func(): pass, func(): Market.manipulate_stock(5, 40, false, false, 6)),
 	News.new(7, "Arming up", "Increased demands for large, small, and physo-arms. Large arms in high demand.",
-	func(): Market.manipulate_industry(1, 60, true, 0), 
+	func(): pass, 
 	func(): 
 		Market.manipulate_stock(2, 22, false, false, 8)
 		Market.manipulate_stock(4, 22, false, true, 0)
