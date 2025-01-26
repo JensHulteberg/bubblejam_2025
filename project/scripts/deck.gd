@@ -38,9 +38,7 @@ func pull_card() -> Card:
 
 
 func shuffle():
-	var rand_sort = func(a, b):
-		return randi() % 2 == 1
-	cards.sort_custom(rand_sort)
+	cards.shuffle()
 
 
 func _add_backside_card(backside_card):
