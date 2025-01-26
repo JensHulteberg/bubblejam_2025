@@ -73,11 +73,14 @@ func step_value() -> void:
 	if reset_ticks > 0:
 		delta += boost
 		reset_ticks -= 1
-		
+	
 	var industry = Market.get_industry_by_id(industry_id)
 	delta = industry.get_industry_manipulation(delta)
 
-	push_value(value + delta)
+	if only_down:
+		push_value(value - abs(delta))
+	else:
+		push_value(value + delta)
 	
 	if reset_ticks <= 0:
 		reset_manipulation()
@@ -88,7 +91,7 @@ func min_max_values () -> Vector2:
 	return Vector2(values.min(), values.max())
 
 func trend() -> int:
-	var look_back_size = 10
+	var look_back_size = 4
 	var look_back = history.slice(history.size() -look_back_size, history.size())
 	var mean_look_back =  look_back.map(func(h): return h.value).reduce(func(v, acc): return v + acc, 0) / look_back_size 
 	return value - mean_look_back

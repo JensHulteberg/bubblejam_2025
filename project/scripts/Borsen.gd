@@ -93,7 +93,7 @@ func init_stocks() -> void:
 	
 func update_stock_rngs() -> void:
 	for a in aktier: 
-		a.upper_bound = rng.randi_range(3, 10)
+		a.upper_bound = rng.randi_range(0, 10)
 		a.lower_bound = -rng.randi_range(0, 10)
 		a.base_boost = rng.randi_range(-3, 3)
 	

@@ -33,25 +33,45 @@ var news: Array[News] = [
 
 var bubble_news: Array[News] = [
 	News.new(1, "Sunny days", "Bright lights, shining S.U.N, will the nice weather last?",
-	func(): pass, func(): Market.manipulate_stock(8, 50, false, false, 8)),
+	func(): pass, 
+	func(): 
+		Market.manipulate_stock(7, 24, false, true, -6)
+		Market.manipulate_stock(8, 30, false, false, 8)
+		Market.manipulate_stock(9, 24, false, true, 0)),
 	News.new(2, "Going nuts", "The public is going nuts for the new nuts-derived supplement.",
-	func(): pass, func(): Market.manipulate_stock(8, 40, true, false, 0)),
+	func(): pass, func(): Market.manipulate_stock(5, 40, true, false, 0)),
 	News.new(3, "Kine is kind", "Kine records record profits and announces large donation spree.",
 	func(): pass, func(): Market.manipulate_stock(4, 40, true, false, 2)),
 	News.new(4, "War breaks out", "War breaks out at the western coast of UWN.",
-	func(): Market.manipulate_industry(1, 90, true, 0), func(): pass),
+	func(): Market.manipulate_industry(1, 90, true, 0), 
+	func(): 
+		Market.manipulate_stock(5, 22, false, true, 0)
+		Market.manipulate_stock(7, 22, false, true, 0)
+		Market.manipulate_stock(8, 22, false, true, 0)
+		),
 	News.new(5, "Energy demands", "Energy demands at an all time high, industry positively electric",
-	func(): Market.manipulate_industry(2, 90, false, 20), func(): pass),
+	func(): Market.manipulate_industry(2, 60, false, 20), func(): pass),
 	News.new(6, "Feeling focused", "Feel Good Inc. focuses efforts on soldier-enhancing drugs.",
-	func(): pass, func(): Market.manipulate_stock(5, 90, false, false, 6)),
+	func(): pass, func(): Market.manipulate_stock(5, 40, false, false, 6)),
 	News.new(7, "Arming up", "Increased demands for large, small, and physo-arms. Large arms in high demand.",
-	func(): Market.manipulate_industry(1, 90, true, 0), func(): Market.manipulate_stock(2, 90, false, false, 8)),
+	func(): Market.manipulate_industry(1, 60, true, 0), 
+	func(): 
+		Market.manipulate_stock(2, 22, false, false, 8)
+		Market.manipulate_stock(4, 22, false, true, 0)
+		Market.manipulate_stock(7, 22, false, true, 0)
+		),
 	News.new(8, "Feeling the flow", "EAZ gives the clear to use max capacity for all dams to satisfy increased demands.",
 	func(): pass, func(): Market.manipulate_stock(2, 60, false, false, 8)),
 	News.new(9, "Electric records", "Energy sector is recording record profits!",
 	func(): Market.manipulate_industry(3, 30, false, 8), func(): pass),
 	News.new(10, "Fashion trends", "Fashion trends have shifted to military-inspired fitness gear, the health industry is booming.",
-	func(): Market.manipulate_industry(2, 30, true, 6), func(): pass),
+	func(): 
+		Market.manipulate_industry(2, 30, true, 6)
+		Market.manipulate_stock(1, 16, false, true, 0)
+		Market.manipulate_stock(2, 22, false, true, 0)
+		Market.manipulate_stock(3, 12, false, true, 0)
+		Market.manipulate_stock(8, 22, false, true, 0),
+	 func(): pass),
 	News.new(11, "News on western coast", "UWNA reports pushing back the rogue nations with great success. Predicts a long military effort to keep the peace.",
 	func(): Market.manipulate_industry(1, 30, true, 12), func(): pass),
 	News.new(12, "Joint venture", "Tentron, Vattenmakt and S.U.N. announce a joint venture in producing energy for the public sector.",
@@ -60,7 +80,10 @@ var bubble_news: Array[News] = [
 	func(): 
 		Market.manipulate_industry(1, 30, true, 32)
 		Market.manipulate_industry(2, 30, true, 32)
-		Market.manipulate_industry(3, 30, true, 32), 
+		Market.manipulate_industry(3, 30, true, 32)
+		for a in Market.aktier:
+			Market.manipulate_stock(a.id, 0, false, false, 0)
+			,
 		func(): pass),
 	News.new(14, "Mindscape case solved", "Local police officer solved the harrowing case that took place earlier this year. He was promoted to detective for his efforts.",
 	func(): pass, func(): pass),

@@ -17,6 +17,7 @@ var bloomberg_terminal: MarginContainer
 
 var day_length: int = 30
 var tick: int = 0
+var skip_days_animation: bool = false
 
 func _ready() -> void:
 	Market.market_update.connect(_on_market_update)
@@ -24,8 +25,10 @@ func _ready() -> void:
 	start_menu.start_game.connect(start_game)
 	
 	#day_index = 0
-	#PlayerState.money = 100000
+	#PlayerState.money = 1000000
 	#Market.timer.wait_time = 0.1
+	#skip_days_animation = true
+	
 	
 func start_game() -> void:
 	$menu.queue_free()
@@ -37,7 +40,9 @@ func begin_day() -> void:
 	PlayerState.save_day_begin(day_index)
 	var day = day_begin.instantiate()
 	$CanvasLayer.add_child(day)
-	await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: $ %s" % PlayerState.license_fee(day_index))
+	
+	if !skip_days_animation:
+		await day.fade_in("DAY %s" % day_index, "TERMINAL LICENSE FEE: $ %s" % PlayerState.license_fee(day_index))
 	init_terminal()
 	
 	if day_index > bubble_day_index:
@@ -45,8 +50,11 @@ func begin_day() -> void:
 	if day_index > burst_day_index:
 		Redaktionen.burst_on = true
 		Market.aktier_can_be_zero()
-		
-	await day.fade_out()
+	
+	if !skip_days_animation:	
+		await day.fade_out()
+	else:
+		day.queue_free()
 
 func init_terminal() -> void:
 	bloomberg_terminal = bt.instantiate()
@@ -78,21 +86,26 @@ func _on_day_over(anim_name):
 	bloomberg_terminal.queue_free()
 
 	var day_end_stats = PlayerState.get_day_end(day_index)
-	
 	var day = day_end.instantiate()
 	$CanvasLayer.add_child(day)
-	day.init(day_index, day_end_stats.money, day_end_stats.stocks, day_end_stats.terminal_fee)
-	await day.fade_in()
-	
+
+	if !skip_days_animation:
+		day.init(day_index, day_end_stats.money, day_end_stats.stocks, day_end_stats.terminal_fee)
+		await day.fade_in()
+
 	if day_end_stats.money - day_end_stats.terminal_fee < 0:
 		await day.fail_to_pay()
 		day.queue_free()
 		lose_game()
 			
 	else:
-		await day.clear_payment()
+		if !skip_days_animation:
+			await day.clear_payment()
 		PlayerState.money -= day_end_stats.terminal_fee
-		await day.fade_out()
+		if !skip_days_animation:
+			await day.fade_out()
+		else:
+			day.queue_free()
 		begin_day()
 
 func lose_game() -> void:
