@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/gloomberg_end.ogg-30206b5b7031d7d243a067edb8e
 [params]
 
 loop=true
-loop_offset=25.585
+loop_offset=0.0
 bpm=0.0
 beat_count=0
 bar_beats=4

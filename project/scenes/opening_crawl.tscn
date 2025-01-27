@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dshrwi5p8qtm"]
 
-[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_mlvps"]
+[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_mlvps"]
 [ext_resource type="Script" path="res://scenes/opening_crawl.gd" id="2_4wm5p"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_ofd37"]
 
@@ -123,7 +123,7 @@ size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "As the value of every stock globally fell to infinite negatives – chaos ensued. Many lost their finances. Some died... But from the ashes rose a new bastion of glorious investment opportunities: [color=yellow]BÖRSEN[/color]. A new  better global trading network – free from the grasp of the AI dream cores."
+text = "As the value of every stock globally fell to infinite negatives - chaos ensued. Many lost their finances. Some died... But from the ashes rose a new bastion of glorious investment opportunities: [color=yellow]BÖRSEN[/color]. A new  better global trading network - free from the grasp of the AI dream cores."
 fit_content = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
@@ -132,7 +132,7 @@ size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("2_ofd37")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[color=yellow]BÖRSEN[/color] was safer – through exclusivity. The market was invite only and the exuberant license fee for the [color=red]GLOOMBERG TERMINAL INTERFACE[/color] ensured that only those who already had money where given the opportunity to make even more."
+text = "[color=yellow]BÖRSEN[/color] was safer - through exclusivity. The market was invite only and the exuberant license fee for the [color=red]GLOOMBERG TERMINAL INTERFACE[/color] ensured that only those who already had money where given the opportunity to make even more."
 fit_content = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/Panel/ScrollContainer/MarginContainer/VBoxContainer"]
