@@ -30,13 +30,14 @@ func init(deck_, hand_):
 			var card = card_res.instantiate()
 			deck.add_card_to_bottom(card)
 			card.init(card_ref.stock)
+			card.set_purchase_price(card_ref.buy_price)
 			
 
 func save_cards_to_player_state() -> void:
-	var ids = deck.cards.map(func(c): return c.stock_id)
-	ids.append_array(hand.cards.map(func(c): return c.stock_id))
+	var ids = deck.cards.map(func(c): return {" id": c.stock_id, "buy_price": c.buy_price })
+	ids.append_array(hand.cards.map(func(c): return {"stock_id": c.stock_id, "buy_price": c.buy_price }))
 	
-	PlayerState.deck = ids.map(func(i): return {"stock": Market.get_aktie_by_id(i), "amount": 1})
+	PlayerState.deck = ids.map(func(i_obj): return {"stock": Market.get_aktie_by_id(i_obj.stock_id), "amount": 1, "buy_price": i_obj.buy_price})
 	hand
 
 func draw_full():

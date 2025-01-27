@@ -16,6 +16,8 @@ signal card_sold
 var hover_tween
 var hover_y_anchor = 0
 
+var buy_price
+
 var dragging: bool = false
 var stock_id: int
 
@@ -72,6 +74,7 @@ func set_purchase_price(price):
 	$MarginContainer/VBoxContainer/purch_label.modulate = Color.WHITE
 	$MarginContainer/VBoxContainer/purch_price.modulate = Color.WHITE
 	$MarginContainer/VBoxContainer/purch_price.text = "$ " + str(price)
+	buy_price = price
 
 func _sync():
 	card_title_label.text = card_title

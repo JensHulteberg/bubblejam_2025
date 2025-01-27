@@ -114,12 +114,14 @@ stretch_mode = 5
 layout_mode = 2
 
 [node name="purch_label" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_7p85u")
 theme_override_font_sizes/font_size = 8
 text = "Purchase price"
 
 [node name="purch_price" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_0vb6g")
 theme_override_font_sizes/font_size = 12

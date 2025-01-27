@@ -50,7 +50,7 @@ var rng = RandomNumberGenerator.new()
 
 var timer: Timer
 
-var stock_update_delay: int = 3
+var stock_update_delay: int = 0.1
 var stock_update_ticks: int = 0
 
 func _ready() -> void:
