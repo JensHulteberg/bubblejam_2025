@@ -2,6 +2,12 @@ extends Node2D
 
 @export var width: float = 492
 @export var height: float = 91
+@export var col_up: Color = Color.GREEN
+@export var col_down: Color = Color.RED
+@export var col_buy: Color = Color.WHITE
+@export var col_sell: Color = Color.BLUE
+@export var col_buy_and_sell: Color = Color.CYAN
+
 var aktie: Aktie 
 
 func set_stock(_aktie: Aktie) -> void:
@@ -62,14 +68,16 @@ func draw_aktie(a: Aktie, step_len: float, height_div: float) -> void:
 
 func get_color(value: int, last_value: int) -> Color:
 	if last_value < value:
-		return Color.GREEN
+		return col_up
 	else:
-		return Color.RED
+		return col_down
 
 func draw_buy_sell(h: HistoricAktie, pos: Vector2) -> void:
-	var color = Color.AQUA
-	if h.sold: 
-		color = Color.WHITE
+	var color = col_buy
+	if h.sold and h.bought: 
+		color = col_buy_and_sell
+	elif h.sold: 
+		color = col_sell
 		
 	draw_circle(pos, 3, color)
 		
