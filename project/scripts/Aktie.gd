@@ -10,6 +10,8 @@ var value: int
 var logo: String
 var sell_spell: Callable
 var min_value: int = 1
+var bought: bool = false
+var sold: bool = false
 
 # base rngs stats
 var upper_bound = 10
@@ -45,8 +47,10 @@ func market_cap() -> int:
 	return amount * value
 	
 func push_value(_value: int) -> void:
-	history.append(HistoricAktie.new(value, amount))
+	history.append(HistoricAktie.new(value, amount, bought, sold))
 	value = max(_value, min_value)
+	sold = false
+	bought = false
 	early_game_boost_crashing_stocks()
 	emit_signal("aktie_update")
 	
@@ -109,5 +113,6 @@ func reset_manipulation() -> void:
 	boost = 0
 
 func sell() -> int:
+	sold = true
 	sell_spell.call(self)
 	return value

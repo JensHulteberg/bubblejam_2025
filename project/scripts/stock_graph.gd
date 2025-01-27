@@ -29,13 +29,24 @@ func draw_border() -> void:
 	Vector2(0.0, 0)
 	], Color.WHITE, 1.0)
 
+class BuySellPos:
+	var h: HistoricAktie
+	var pos: Vector2
 
 func draw_aktie(a: Aktie, step_len: float, height_div: float) -> void:
 	var coords: PackedVector2Array = []
 	var colors: PackedColorArray = []
 	var idx: int = 0
 	var last_value: int
+	var buy_sell_rings: Array[BuySellPos] = []
+	
 	for h in a.history:
+		var pos = give_vector(h.value, idx, step_len, height_div)
+		if h.bought or h.sold:
+			var bps = BuySellPos.new()
+			bps.h = h
+			bps.pos = pos
+			buy_sell_rings.append(bps)
 		coords.append(give_vector(h.value, idx, step_len, height_div))
 		if last_value != null:
 			colors.append(get_color(h.value, last_value))
@@ -45,6 +56,8 @@ func draw_aktie(a: Aktie, step_len: float, height_div: float) -> void:
 	coords.append(give_vector(a.value, idx, step_len, height_div))
 	colors.append(get_color(a.value, last_value))
 	draw_polyline_colors(coords, colors, 1.0)
+	for bps in buy_sell_rings:
+		draw_buy_sell(bps.h, bps.pos)
 	
 
 func get_color(value: int, last_value: int) -> Color:
@@ -53,6 +66,13 @@ func get_color(value: int, last_value: int) -> Color:
 	else:
 		return Color.RED
 
+func draw_buy_sell(h: HistoricAktie, pos: Vector2) -> void:
+	var color = Color.AQUA
+	if h.sold: 
+		color = Color.WHITE
+		
+	draw_circle(pos, 3, color)
+		
 
 func give_vector(value: int, idx: int, step_len: float, height_div: float) -> Vector2:
 	return Vector2(idx * step_len, -(value / height_div) + height)

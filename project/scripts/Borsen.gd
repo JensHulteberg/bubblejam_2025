@@ -102,6 +102,7 @@ func buy_stock(stock_id: int) -> bool:
 		if a.id == stock_id:
 			if PlayerState.money >= a.value:
 				PlayerState.money -= a.value
+				a.bought = true
 				return true
 			else:
 				return false
