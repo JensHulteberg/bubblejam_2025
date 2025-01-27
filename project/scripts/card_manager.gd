@@ -34,7 +34,7 @@ func init(deck_, hand_):
 			
 
 func save_cards_to_player_state() -> void:
-	var ids = deck.cards.map(func(c): return {" id": c.stock_id, "buy_price": c.buy_price })
+	var ids = deck.cards.map(func(c): return {"stock_id": c.stock_id, "buy_price": c.buy_price })
 	ids.append_array(hand.cards.map(func(c): return {"stock_id": c.stock_id, "buy_price": c.buy_price }))
 	
 	PlayerState.deck = ids.map(func(i_obj): return {"stock": Market.get_aktie_by_id(i_obj.stock_id), "amount": 1, "buy_price": i_obj.buy_price})
