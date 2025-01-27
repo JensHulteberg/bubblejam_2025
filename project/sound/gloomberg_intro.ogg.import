@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/gloomberg_intro.ogg-99654b7c20f0e8e7db8f12cce
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

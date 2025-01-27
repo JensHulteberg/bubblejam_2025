@@ -5,5 +5,3 @@
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 autoplay = true
 script = ExtResource("1_kxi7k")
-
-[connection signal="finished" from="." to="." method="_on_finished"]
