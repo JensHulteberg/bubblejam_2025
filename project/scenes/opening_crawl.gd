@@ -4,6 +4,7 @@ var start_menu_res = preload("res://scenes/start_menu.tscn")
 
 func _ready() -> void:
 	MusicPlayer.play_song("intro")
+	$Timer.start()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	instance_start_menu()
@@ -14,6 +15,9 @@ func instance_start_menu():
 	queue_free()
 
 func _input(event):
-	if event is InputEventKey:
-		if event.pressed:
+	if $Timer.is_stopped():
+		if event is InputEventKey:
+			if event.pressed:
+				instance_start_menu()
+		elif event is InputEventMouse:
 			instance_start_menu()

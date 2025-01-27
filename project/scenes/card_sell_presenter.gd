@@ -24,6 +24,8 @@ func _on_button_button_down() -> void:
 	if can_buy:
 		SfxPlayer.play_sfx("positive")
 		PlayerState.emit_signal("add_card_to_deck", card_on_sale)
+		var sold_stock = Market.get_aktie_by_id(card_on_sale.stock_id)
+		card_on_sale.set_purchase_price(sold_stock.value)
 		card_on_sale.enable()
 		queue_free()
 

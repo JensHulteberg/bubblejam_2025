@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3gyhwbgwvstj"]
+[gd_scene load_steps=26 format=3 uid="uid://bfpjsmukvoays"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_4bf1b"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_4bf1b"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_8a7t1"]
 [ext_resource type="PackedScene" uid="uid://wigs4me5aqt3" path="res://scenes/white_line.tscn" id="2_jx0n4"]
 [ext_resource type="Script" path="res://scenes/bloomberg_terminal.gd" id="2_nxhbo"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cyxpqxtjbuxo8" path="res://scenes/stock_graph.tscn" id="6_ma82b"]
 [ext_resource type="PackedScene" uid="uid://b72kudcgdxyne" path="res://scenes/company_desc_vis.tscn" id="6_n1yuu"]
 [ext_resource type="PackedScene" uid="uid://bbhwblwx6eo8p" path="res://scenes/deck.tscn" id="8_0qqq5"]
-[ext_resource type="PackedScene" path="res://scenes/card_market.tscn" id="8_ppxus"]
+[ext_resource type="PackedScene" uid="uid://d1fpdd86g4mix" path="res://scenes/card_market.tscn" id="8_ppxus"]
 [ext_resource type="PackedScene" uid="uid://bdq78udxiavn3" path="res://scenes/card_hand.tscn" id="9_u7vq2"]
 
 [sub_resource type="Gradient" id="Gradient_0nyuj"]
@@ -96,6 +96,44 @@ _data = {
 "sell_flicker": SubResource("Animation_c6f1e")
 }
 
+[sub_resource type="Animation" id="Animation_teu6l"]
+resource_name = "news_flicker"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/main_layout/news/news/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 1, 0, 1), Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eo0j0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/main_layout/news/news/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpa5d"]
+_data = {
+"RESET": SubResource("Animation_eo0j0"),
+"news_flicker": SubResource("Animation_teu6l")
+}
+
 [node name="BloombergTerminal" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,7 +211,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.35
+size_flags_stretch_ratio = 2.52
 theme_override_constants/separation = 32
 
 [node name="stonk_list" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left"]
@@ -243,7 +281,7 @@ theme_override_constants/separation = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.6
+size_flags_stretch_ratio = 1.4
 
 [node name="Label" type="Label" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/VBoxContainer"]
 layout_mode = 2
@@ -313,17 +351,10 @@ vertical_alignment = 2
 [node name="white_line" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer" instance=ExtResource("2_jx0n4")]
 layout_mode = 2
 
-[node name="draft" type="Panel" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer"]
+[node name="CardMarket" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer" instance=ExtResource("8_ppxus")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="CardMarket" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer/draft" instance=ExtResource("8_ppxus")]
-layout_mode = 1
-anchors_preset = 15
-anchor_bottom = 1.0
-offset_bottom = 0.0
-grow_vertical = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer"]
 layout_mode = 2
@@ -447,13 +478,21 @@ layout_mode = 2
 text = "NEWS"
 
 [node name="white_line" parent="VBoxContainer/main_layout/news/VBoxContainer" instance=ExtResource("2_jx0n4")]
-visible = false
 layout_mode = 2
 
 [node name="news" type="Panel" parent="VBoxContainer/main_layout/news"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/main_layout/news/news"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/main_layout/news/news"]
 layout_mode = 1
@@ -503,6 +542,11 @@ layout_mode = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_t6ke8")
+}
+
+[node name="news_animationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tpa5d")
 }
 
 [connection signal="area_entered" from="VBoxContainer/main_layout/VBoxContainer/left/mid/HBoxContainer/VBoxContainer2/sell/CenterContainer/Area2D" to="." method="_on_area_2d_area_entered"]

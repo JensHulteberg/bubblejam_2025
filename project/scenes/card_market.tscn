@@ -1,20 +1,101 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1fpdd86g4mix"]
+[gd_scene load_steps=9 format=3 uid="uid://d1fpdd86g4mix"]
 
 [ext_resource type="Script" path="res://scenes/card_market.gd" id="1_nvamf"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_r7oex"]
 [ext_resource type="PackedScene" uid="uid://cwnkot68534b7" path="res://scenes/card_sell_presenter.tscn" id="2_kfyf6"]
 
-[node name="CardMarket" type="MarginContainer"]
-anchors_preset = 10
+[sub_resource type="Gradient" id="Gradient_ctmic"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eh8ks"]
+gradient = SubResource("Gradient_ctmic")
+height = 2
+
+[sub_resource type="Animation" id="Animation_7gnub"]
+resource_name = "refresh_blink"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3pl17"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djiij"]
+_data = {
+"RESET": SubResource("Animation_3pl17"),
+"refresh_blink": SubResource("Animation_7gnub")
+}
+
+[node name="CardMarket" type="Panel"]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 105.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource("1_r7oex")
 script = ExtResource("1_nvamf")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 197.0
+grow_horizontal = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+size_flags_vertical = 8
+step = 0.1
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_eh8ks")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="CardSellPresenter" parent="HBoxContainer" instance=ExtResource("2_kfyf6")]
+[node name="CardSellPresenter" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_kfyf6")]
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_djiij")
+}
+
+[node name="Timer" type="Timer" parent="."]

@@ -10,7 +10,7 @@ signal terminal_price_hiked
 var deck
 
 var draw_card_timer_limit = 1
-var card_to_market_timer_limit = 1
+var card_to_market_timer_limit = 5
 var draw_card_timer = 0
 var card_market_timer = 0
 var day_index = 0

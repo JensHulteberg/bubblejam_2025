@@ -8,7 +8,7 @@ signal card_sold
 @export var image: Texture2D = preload("res://graphics/placeholder_card_image.png")
 @export var description: String
 
-@onready var card_title_label: Label = $MarginContainer/VBoxContainer/MarginContainer/CardTitleLabel
+@onready var card_title_label: Label = $MarginContainer/VBoxContainer/CardTitleLabel
 @onready var image_texture_rect: TextureRect = $MarginContainer/VBoxContainer/MarginContainer2/ImageTextureRect
 
 @onready var button: Button = $Button
@@ -57,6 +57,8 @@ func _ready():
 	pivot_offset.x = custom_minimum_size.x / 2
 	pivot_offset.y = custom_minimum_size.y
 	button.focus_mode = Control.FOCUS_NONE
+	$MarginContainer/VBoxContainer/purch_label.modulate = Color.TRANSPARENT
+	$MarginContainer/VBoxContainer/purch_price.modulate = Color.TRANSPARENT
 
 
 func _process(delta: float):
@@ -66,15 +68,20 @@ func _process(delta: float):
 	if dragging:
 		global_position = get_viewport().get_mouse_position() - (size / 2)
 
+func set_purchase_price(price):
+	$MarginContainer/VBoxContainer/purch_label.modulate = Color.WHITE
+	$MarginContainer/VBoxContainer/purch_price.modulate = Color.WHITE
+	$MarginContainer/VBoxContainer/purch_price.text = "$ " + str(price)
 
 func _sync():
-	card_title_label.text = "[center]" + card_title + "[/center]"
+	card_title_label.text = card_title
 	image_texture_rect.texture = image
 
 func sell():
 	SfxPlayer.play_sfx("positronic")
 	PlayerState.emit_signal("explode_particles")
 	Market.sell_stock(stock_id)
+	
 	emit_signal("card_sold")
 
 func _on_button_button_down() -> void:

@@ -104,6 +104,7 @@ func _on_news_published(article):
 	news_list.move_child(news_list_item, 0)
 	var scrollbar = news_scroll_cont.get_v_scroll_bar()
 	scrollbar.ratio = 0
+	$news_animationPlayer.play("news_flicker")
 	
 
 
