@@ -19,5 +19,5 @@ func _input(event):
 		if event is InputEventKey:
 			if event.pressed:
 				instance_start_menu()
-		elif event is InputEventMouse:
+		elif event is InputEventMouseButton:
 			instance_start_menu()

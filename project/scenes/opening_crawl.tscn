@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dshrwi5p8qtm"]
 
-[ext_resource type="Theme" uid="uid://c835unji6os40" path="res://graphics/master_theme.tres" id="1_mlvps"]
+[ext_resource type="Theme" uid="uid://3x7giy0h6m5f" path="res://graphics/master_theme.tres" id="1_mlvps"]
 [ext_resource type="Script" path="res://scenes/opening_crawl.gd" id="2_4wm5p"]
 [ext_resource type="FontFile" uid="uid://fargnt02lbij" path="res://fonts/Mx437_DOS-V_re_JPN30.ttf" id="2_ofd37"]
 
